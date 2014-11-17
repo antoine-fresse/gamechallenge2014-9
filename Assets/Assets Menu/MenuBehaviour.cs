@@ -1,21 +1,38 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class MenuBehaviour : MonoBehaviour
 {
-    public string IP = "127.0.0.1";
+    public string IP;
     public int Port = 25001;
-    public Canvas menuPrincipal;
-    public Canvas messageAttente;
+    public List<GameObject> menuPrincipal;
+    public GameObject messageAttenteServeur;
+    public GameObject messageAttenteClient;
+    // Deux variables dégeulasses néccessaires :
+    private bool attServeur = false;
+    private bool attClient = false;
 
     void Setup()
     {
-        this.menuPrincipal.gameObject.SetActive(true);
-        this.messageAttente.gameObject.SetActive(false);
+        this.menuPrincipal[0].gameObject.SetActive(true);
+        this.menuPrincipal[1].gameObject.SetActive(true);
+        this.menuPrincipal[2].gameObject.SetActive(true);
+        this.messageAttenteServeur.gameObject.SetActive(false);
+        this.messageAttenteClient.gameObject.SetActive(false);
     }
 
     void Update()
     {
+        this.messageAttenteServeur.gameObject.SetActive(attServeur);
+        this.messageAttenteClient.gameObject.SetActive(attClient);
+        if (attServeur || attClient)
+        {
+            this.menuPrincipal[0].gameObject.SetActive(false);
+            this.menuPrincipal[1].gameObject.SetActive(false);
+            this.menuPrincipal[2].gameObject.SetActive(false);
+        }
+
         // Si on est un serveur, on attend des connexions :
         if (Network.peerType == NetworkPeerType.Server)
         {
@@ -26,12 +43,13 @@ public class MenuBehaviour : MonoBehaviour
                 this.launchGame();
             }
         }
-        else
-            this.messageAttente.gameObject.SetActive(false);
+        
     }
 
     public void launchGameClient()
     {
+        this.attClient = true;
+
         // On tente de se connecter en tant que client
         if (Network.Connect(IP, Port) != NetworkConnectionError.NoError)
         {
@@ -45,11 +63,7 @@ public class MenuBehaviour : MonoBehaviour
     {
         bool useNat = !Network.HavePublicAddress();
         if (Network.InitializeServer(2, Port, useNat) == NetworkConnectionError.NoError)
-        {
-            // Serveur créé !
-            this.menuPrincipal.gameObject.SetActive(false);
-            this.messageAttente.gameObject.SetActive(true);
-        }
+            this.attServeur = true; // Serveur créé !
         else
             Debug.LogError("Echec de la création du serveur !!!");
     }
