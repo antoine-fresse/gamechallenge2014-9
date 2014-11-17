@@ -26,6 +26,8 @@ public class MenuBehaviour : MonoBehaviour
                 this.launchGame();
             }
         }
+        else
+            this.messageAttente.gameObject.SetActive(false);
     }
 
     public void launchGameClient()
