@@ -41,7 +41,27 @@ TagManager:
     userID: 0
     uniqueID: 0
     locked: 0
-  - name: Mask
+  - name: Background2
+    userID: 6
+    uniqueID: 3136754161
+    locked: 0
+  - name: Background1
+    userID: 5
+    uniqueID: 3250776541
+    locked: 0
+  - name: Playground3
+    userID: 4
+    uniqueID: 3447968079
+    locked: 0
+  - name: Playground2
+    userID: 3
+    uniqueID: 1591246985
+    locked: 0
+  - name: Playground1
+    userID: 2
+    uniqueID: 3005430747
+    locked: 0
+  - name: Foreground
     userID: 1
     uniqueID: 3590840955
     locked: 0
