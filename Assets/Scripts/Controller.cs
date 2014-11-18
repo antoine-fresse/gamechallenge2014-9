@@ -43,12 +43,15 @@ public class Controller : MonoBehaviour {
 	public float _x = 0.0f;
 	public float _y = 0.0f;
 	public float _z = 0.0f;
-	
+
+	private float last_y;
+
 	// Use this for initialization
 	void Start () {
 		xInit = (int)(Input.acceleration.x*100);
 		yInit = (int)(Input.acceleration.y*100);
 		zInit = (int)(Input.acceleration.z*100);
+		last_y = yInit;
 		Gauche = new Rect(0, 0 , Screen.width / 3, Screen.height);
 		Droite = new Rect(Screen.width - Screen.width / 3, 0 , Screen.width / 3, Screen.height);
 		Bas = new Rect(Screen.width / 3, 0, Screen.width - (Screen.width/3)*2, Screen.height/3);
@@ -70,10 +73,9 @@ public class Controller : MonoBehaviour {
 		iy = Input.acceleration.y;
 		iz = Input.acceleration.z;
 
-	
-
-		if (Mathf.Abs(x) >= borneX) {_x = Input.acceleration.x;}
-		if (Mathf.Abs(y) >= borneY) {_y = -Input.acceleration.y/2;}
+		if (Mathf.Abs(x) >= borneX) {_x = Input.acceleration.x/10;}
+		if (Mathf.Abs(y) >= borneY) {_y = Input.acceleration.y/10;}
+		//if (Mathf.Abs(y) >= borneY) {_y = (y-last_y)/10;last_y = y;}
 		if (Mathf.Abs(z) >= borneZ) {_z = Input.acceleration.z;}
 
 		if (!w.isPapy) {
@@ -88,13 +90,13 @@ public class Controller : MonoBehaviour {
 			/** Touches **/
 			if (Input.touchCount > 0) {
 					if (Gauche.Contains (Input.GetTouch (0).position)) {
-							Extincteur.transform.Translate (-0.05f, 0, 0);
+							Extincteur.transform.Translate (-0.01f, 0, 0);
 					}
 					if (Droite.Contains (Input.GetTouch (0).position)) {
-							Extincteur.transform.Translate (0.05f, 0, 0);
+							Extincteur.transform.Translate (0.01f, 0, 0);
 					}
 					if (Bas.Contains (Input.GetTouch (0).position)) {
-							Extincteur.transform.Translate (0, -0.05f, 0);
+							
 					}
 			}
 		}

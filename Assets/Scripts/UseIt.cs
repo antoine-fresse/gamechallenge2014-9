@@ -7,12 +7,11 @@ public class UseIt : MonoBehaviour {
 	private float nextFire;
 	
 	// Update is called once per frame
-	void Update () {
-		if (Input.GetKeyDown ("space") && Time.time > nextFire)
+	void shoot () {
+		if (Time.time > nextFire)
 		{
 				nextFire = Time.time + fireRate;
 				Instantiate(water, this.transform.position, water.transform.rotation);
-
 		}
 	}
 }
