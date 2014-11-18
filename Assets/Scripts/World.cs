@@ -5,8 +5,14 @@ public class World : MonoBehaviour
 {
     public GameObject prefabPapy;
     public GameObject prefabFille;
+	public GameObject prefabLight;
+	public GameObject prefabExtincteur;
 	public bool isPapy;
     public bool testLocal;
+	public GameObject papy;
+	public GameObject fille;
+	public GameObject light;
+	public GameObject extincteur;
 	
 	// Use this for initialization
 	void Start ()
@@ -15,21 +21,26 @@ public class World : MonoBehaviour
         // Lenka : Client
         if (testLocal)
         {
-            Instantiate(this.prefabPapy, this.prefabPapy.transform.position, this.prefabPapy.transform.rotation);
-            Instantiate(this.prefabFille, this.prefabFille.transform.position, this.prefabFille.transform.rotation);
+			papy = Instantiate(this.prefabPapy, this.prefabPapy.transform.position, this.prefabPapy.transform.rotation) as GameObject;
+			fille = Instantiate(this.prefabFille, this.prefabFille.transform.position, this.prefabFille.transform.rotation) as GameObject;
+			light = Instantiate(this.prefabLight, this.prefabLight.transform.position, this.prefabLight.transform.rotation) as GameObject;
+			extincteur = Instantiate(this.prefabExtincteur, this.prefabExtincteur.transform.position, this.prefabExtincteur.transform.rotation)as GameObject;
         }
         else
         {
             if (Network.peerType == NetworkPeerType.Client)
             {
                 this.isPapy = false;
-                Network.Instantiate(this.prefabFille, this.prefabFille.transform.position, this.prefabFille.transform.rotation, 0);
-            }
+                fille = Network.Instantiate(this.prefabFille, this.prefabFille.transform.position, this.prefabFille.transform.rotation, 0) as GameObject;
+				extincteur = Network.Instantiate(this.prefabExtincteur, this.prefabExtincteur.transform.position, this.prefabExtincteur.transform.rotation,0)as GameObject;
+
+			}
             else
             {
                 this.isPapy = true;
-                Network.Instantiate(this.prefabPapy, this.prefabPapy.transform.position, this.prefabPapy.transform.rotation, 0);
-            }
+				papy = Network.Instantiate(this.prefabPapy, this.prefabPapy.transform.position, this.prefabPapy.transform.rotation, 0) as GameObject;
+				light = Network.Instantiate(this.prefabLight, this.prefabLight.transform.position, this.prefabLight.transform.rotation,0) as GameObject;
+			}
         }
        
 	}
