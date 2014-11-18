@@ -68,4 +68,13 @@ public class Player : MonoBehaviour
         if (networkView.isMine)
             networkView.RPC("changeColor", RPCMode.OthersBuffered);
     }
+
+    public void victory()
+    {
+        Application.LoadLevel("Victoire");
+    }
+    public void defeat()
+    {
+        Application.LoadLevel("Defaite");
+    }
 }
