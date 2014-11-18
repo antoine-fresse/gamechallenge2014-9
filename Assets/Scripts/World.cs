@@ -13,7 +13,8 @@ public class World : MonoBehaviour
 	public GameObject fille;
 	public GameObject light;
 	public GameObject extincteur;
-	
+
+    public Transform StartPosition;
 	// Use this for initialization
 	void Start ()
     {
@@ -21,8 +22,8 @@ public class World : MonoBehaviour
         // Lenka : Client
         if (testLocal)
         {
-			papy = Instantiate(this.prefabPapy, this.prefabPapy.transform.position, this.prefabPapy.transform.rotation) as GameObject;
-			fille = Instantiate(this.prefabFille, this.prefabFille.transform.position, this.prefabFille.transform.rotation) as GameObject;
+            papy = Instantiate(this.prefabPapy, StartPosition.position, Quaternion.identity) as GameObject;
+            fille = Instantiate(this.prefabFille, StartPosition.position + new Vector3(0.25f,0f,0f), Quaternion.identity) as GameObject;
 			light = Instantiate(this.prefabLight, this.prefabLight.transform.position, this.prefabLight.transform.rotation) as GameObject;
 			extincteur = Instantiate(this.prefabExtincteur, this.prefabExtincteur.transform.position, this.prefabExtincteur.transform.rotation)as GameObject;
         }
