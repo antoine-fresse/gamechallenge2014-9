@@ -17,7 +17,5 @@ public class FireColumn : MonoBehaviour {
 
     void OnTriggerEnter(Collider other) {
         
-
-
     }
 }

@@ -3,11 +3,18 @@ using System.Collections;
 
 public class Player : MonoBehaviour
 {
+    // Variables de syncronisation de données :
     private float lastSynchronizationTime = 0f;
     private float syncDelay = 0f;
     private float syncTime = 0f;
     private Vector3 syncStartPosition = Vector3.zero;
     private Vector3 syncEndPosition = Vector3.zero;
+
+    public World refWorld;
+
+    // Victoire :
+    private bool isArrived = false;
+    public GameObject endZone;
 
     void Start()
     {
@@ -25,6 +32,28 @@ public class Player : MonoBehaviour
         {
             this.SyncedMovement();
         }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        // Zone de fin
+        if (collision.gameObject == this.endZone)
+        {
+            isArrived = true;
+            declareVictory(); // Accorde la victoire uniquement si les deux joueurs sont dans la zone
+        }
+
+        // Flammes :
+        GameObject[] listeFeu = GameObject.FindGameObjectsWithTag("Fire");
+        for (int i = 1 ; i < listeFeu.Length ; i++)
+            if (listeFeu[i] == collision.gameObject)
+                this.declareDefeat();
+    }
+
+    void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject == this.endZone)
+            isArrived = false;
     }
 
     private void SyncedMovement()
@@ -67,5 +96,35 @@ public class Player : MonoBehaviour
         renderer.material.color = new Color(0.0f, 1.0f, 0.0f);
         if (networkView.isMine)
             networkView.RPC("changeColor", RPCMode.OthersBuffered);
+    }
+
+    // Victoire-défaite :
+    // Utiliser declareVictory() pour faire gagner la partie
+    // Utiliser declareDefeat() pour faire perdre la partie
+    // NE PAS UTILISER victory() NI defeat()
+
+    public void declareVictory()
+    {
+        networkView.RPC("victory", RPCMode.OthersBuffered);
+    }
+    public void declareDefeat()
+    {
+        networkView.RPC("defeat", RPCMode.OthersBuffered);
+    }
+
+    [RPC]
+    private void victory()
+    {
+        if (isArrived)
+        {
+            networkView.RPC("victory", RPCMode.OthersBuffered);
+            Application.LoadLevel("Victoire");
+        }
+    }
+
+    [RPC]
+    private void defeat()
+    {
+        Application.LoadLevel("Defaite");
     }
 }
