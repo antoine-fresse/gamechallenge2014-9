@@ -176,6 +176,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: aa4811867c7b6b644b8264d155514d8e, type: 2}
+      propertyPath: orthographic size
+      value: .910895705
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000002, guid: aa4811867c7b6b644b8264d155514d8e, type: 2}
+      propertyPath: orthographic size
+      value: .910895705
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aa4811867c7b6b644b8264d155514d8e, type: 2}
   m_RootGameObject: {fileID: 779322345}
@@ -383,7 +391,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 1
+  orthographic size: .910895705
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -779,8 +787,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: .390495777, y: .183428884}
-  m_Center: {x: -.0210586786, y: -.195560485}
+  m_Size: {x: .390495777, y: .178564966}
+  m_Center: {x: -.0210586786, y: .0889714062}
 --- !u!50 &831690821
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -1284,7 +1292,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 1
+  orthographic size: .910895705
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
