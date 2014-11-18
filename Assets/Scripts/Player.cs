@@ -10,8 +10,6 @@ public class Player : MonoBehaviour
     private Vector3 syncStartPosition = Vector3.zero;
     private Vector3 syncEndPosition = Vector3.zero;
 
-    public World refWorld;
-
     // Victoire :
     private bool isArrived = false;
     public GameObject endZone;

@@ -10,15 +10,10 @@ public class deleteFlamme : MonoBehaviour {
 	void FixedUpdate()
 	{
 		Vector3 v = new Vector3 (transform.position.x, transform.position.y, transform.position.z + 0.1f);
-		transform.position = v;
-	}
-	void OnTriggerExit(Collider other){
-		Debug.Log (other.tag);
-		if (other.tag == "Fire")
-			Destroy (other);
+		//transform.position = v;
 	}
 	void OnTriggerEnter(Collider other){
-		Debug.Log (other.tag);
+		Debug.Log ("b");
 		if (other.tag == "Fire")
 			Destroy (other.gameObject);
 	}
