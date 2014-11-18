@@ -43,7 +43,6 @@ public class MenuBehaviour : MonoBehaviour
                 this.launchGame();
             }
         }
-        
     }
 
     public void launchGameClient()
