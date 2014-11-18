@@ -3,7 +3,7 @@ using System.Collections;
 
 public class TestMovement : MonoBehaviour {
 
-    public Transform Camera;
+    public Transform LightT;
     public float Speed = 10f;
     private Transform _transform;
     private SpriteRenderer _renderer;
@@ -25,6 +25,6 @@ public class TestMovement : MonoBehaviour {
         //Debug.Log(Input.GetAxis("Horizontal"));
 
         _transform.position = new Vector3(_transform.position.x + Input.GetAxis("Horizontal") * Speed * Time.deltaTime / 128f, _transform.position.y, _transform.position.z + Input.GetAxis("Vertical") * Speed * Time.deltaTime * 1.6f / 128f);
-		  
+        LightT.position = new Vector3(LightT.position.x + Input.GetAxis("Mouse X") * Speed * 10f * Time.deltaTime / 128f, LightT.position.y, LightT.position.z);		  
 	}
 }

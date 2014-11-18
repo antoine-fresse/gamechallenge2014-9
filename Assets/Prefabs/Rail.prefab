@@ -8,9 +8,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400000}
+  - 212: {fileID: 21200000}
   - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: Rails
+  m_Name: Rail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23,7 +24,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.30080009, y: 1.53999996, z: -.55704999}
+  m_LocalPosition: {x: -1.20710003, y: 0, z: -.00614780001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -34,14 +35,34 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74d0a96c41d53e84182b54ba02719faf, type: 3}
+  m_Script: {fileID: 11500000, guid: 32b9740720d097e43a2ee5410b1001c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PrefabRail: {fileID: 400000, guid: bf539f8ef9244234e8367d8405349bff, type: 2}
-  Width: 1.21000004
-  Count: 20
+  LightColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!212 &21200000
+SpriteRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: 8fec955a299561f4f80a5c53f46f7161, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 3590840955
+  m_SortingOrder: -1
+  m_Sprite: {fileID: 21300000, guid: 12f7e8349252f014eb81a8549e91a5d3, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

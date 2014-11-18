@@ -31,7 +31,6 @@ public class World : MonoBehaviour
                 Network.Instantiate(this.prefabPapy, this.prefabPapy.transform.position, this.prefabPapy.transform.rotation, 0);
             }
         }
-       
 	}
 	
 	// Update is called once per frame
