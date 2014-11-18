@@ -15,9 +15,11 @@ public class MenuBehaviour : MonoBehaviour
 
     void Setup()
     {
-        this.menuPrincipal[0].gameObject.SetActive(true);
-        this.menuPrincipal[1].gameObject.SetActive(true);
+        for (int i = 0; i < this.menuPrincipal.Count; i++)
+            this.menuPrincipal[i].gameObject.SetActive(true);
+        /*this.menuPrincipal[1].gameObject.SetActive(true);
         this.menuPrincipal[2].gameObject.SetActive(true);
+        this.menuPrincipal[3].gameObject.SetActive(true);*/
         this.messageAttenteServeur.gameObject.SetActive(false);
         this.messageAttenteClient.gameObject.SetActive(false);
     }
@@ -28,9 +30,13 @@ public class MenuBehaviour : MonoBehaviour
         this.messageAttenteClient.gameObject.SetActive(attClient);
         if (attServeur || attClient)
         {
-            this.menuPrincipal[0].gameObject.SetActive(false);
+
+            for (int i = 0; i < this.menuPrincipal.Count; i++)
+                this.menuPrincipal[i].gameObject.SetActive(false);
+            /*this.menuPrincipal[0].gameObject.SetActive(false);
             this.menuPrincipal[1].gameObject.SetActive(false);
             this.menuPrincipal[2].gameObject.SetActive(false);
+            this.menuPrincipal[3].gameObject.SetActive(true);*/
         }
 
         // Si on est un serveur, on attend des connexions :
@@ -83,5 +89,10 @@ public class MenuBehaviour : MonoBehaviour
     void OnFailedToConnect(NetworkConnectionError error)
     {
         Application.LoadLevel("Menu");
+    }
+
+    public void credits()
+    {
+        Application.LoadLevel("Credits");
     }
 }
