@@ -15,4 +15,9 @@ public class NetworkInstanciate : MonoBehaviour
         if (prefabFille != null)
             Network.Instantiate(this.prefabFille, this.prefabFille.transform.position, this.prefabFille.transform.rotation, 0);
 	}
+
+    void OnDisconnectedFromServer(NetworkDisconnection info)
+    {
+        Application.LoadLevel("Menu");
+    }
 }

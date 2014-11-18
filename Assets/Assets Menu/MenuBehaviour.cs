@@ -79,4 +79,9 @@ public class MenuBehaviour : MonoBehaviour
         Network.Disconnect();
         Application.Quit();
     }
+
+    void OnFailedToConnect(NetworkConnectionError error)
+    {
+        Application.LoadLevel("Menu");
+    }
 }

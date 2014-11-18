@@ -317,7 +317,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Tentative de connexion \xE0 "
+  m_Text: Attempting to connect to the game server
 --- !u!222 &421661751
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -689,7 +689,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8266a3795877c6a4ca28145360564d34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IP: 192.168.43.1
+  IP: 192.168.4.34
   Port: 25001
   menuPrincipal:
   - {fileID: 912708086}
@@ -768,7 +768,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: En attente d'une connexion
+  m_Text: Server launched. Waiting another player ...
 --- !u!222 &1131339786
 CanvasRenderer:
   m_ObjectHideFlags: 0
