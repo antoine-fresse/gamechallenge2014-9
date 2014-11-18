@@ -160,7 +160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   w: {fileID: 974927646}
   borneX: 0
-  borneY: 0
+  borneY: 5
   borneZ: 0
   borneGX: 0
   borneGY: 0
@@ -1274,6 +1274,10 @@ Prefab:
       propertyPath: w
       value: 
       objectReference: {fileID: 974927646}
+    - target: {fileID: 11400000, guid: 4233a1c1a51ca304c840dc94edb5625b, type: 2}
+      propertyPath: borneY
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4233a1c1a51ca304c840dc94edb5625b, type: 2}
   m_RootGameObject: {fileID: 222897627}
