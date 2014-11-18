@@ -5,7 +5,7 @@ AnimatorController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: smallFire
+  m_Name: mediumFire
   serializedVersion: 2
   m_AnimatorParameters: []
   m_AnimatorLayers:
@@ -25,11 +25,11 @@ State:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: smallFire_idle
+  m_Name: mediumFire_idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Motions:
-  - {fileID: 7400000, guid: be89f45fca979d449acd384b986fddac, type: 2}
+  - {fileID: 7400000, guid: 8c1cd0c4980eb9f4ba1801501fb8a54f, type: 2}
   m_ParentStateMachine: {fileID: 110700000}
   m_Position: {x: 200, y: 0, z: 0}
   m_IKOnFeet: 0
