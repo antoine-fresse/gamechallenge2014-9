@@ -24,8 +24,7 @@ public class TestMovement : MonoBehaviour {
 	void FixedUpdate () {
         //Debug.Log(Input.GetAxis("Horizontal"));
 
-        _transform.parent.transform.position = new Vector3(_transform.position.x + Input.GetAxis("Horizontal") * Speed * Time.deltaTime / 128f, _transform.position.y, _transform.position.z + Input.GetAxis("Vertical") * Speed * Time.deltaTime * 1.6f / 128f);
-
-       
+        _transform.position = new Vector3(_transform.position.x + Input.GetAxis("Horizontal") * Speed * Time.deltaTime / 128f, _transform.position.y, _transform.position.z + Input.GetAxis("Vertical") * Speed * Time.deltaTime * 1.6f / 128f);
+		  
 	}
 }
