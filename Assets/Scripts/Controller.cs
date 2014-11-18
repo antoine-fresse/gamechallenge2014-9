@@ -144,10 +144,15 @@ public class Controller : MonoBehaviour {
 
 			/** Touches **/
 			if (Input.touchCount > 0) {
-				if (Bas.Contains (Input.GetTouch (0).position)) {
-					//Papy.transform.Translate (0, 0, -0.05f);
+				for (int i = 0; i < Input.touchCount; i++){
+					if (Droite.Contains (Input.GetTouch (i).position)) {Papy.GetComponent<Papy>().holdHand = true;/**Debug.Log("HOLDING");**/}
+					else {Papy.GetComponent<Papy>().holdHand = false;/**Debug.Log("NOT");**/}
+					if (Bas.Contains (Input.GetTouch (i).position)) {/**TODO **//**Debug.Log("EN BAS");**/}
 				}
 			}
+			else {Papy.GetComponent<Papy>().holdHand = true;}
+			/** TODO Papy.GetComponent<Animator>().SetBool("holdHand",Papy.GetComponent<Papy>().holdHand);**/
+
 		}
 	}
 	
