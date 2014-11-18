@@ -15,9 +15,7 @@ public class FireColumn : MonoBehaviour {
 	    transform.Translate(new Vector3(Speed*Time.deltaTime/128f,0f,0f));
 	}
 
-    void OnTriggerEnter2D(Collider other) {
+    void OnTriggerEnter(Collider other) {
         
-
-
     }
 }
