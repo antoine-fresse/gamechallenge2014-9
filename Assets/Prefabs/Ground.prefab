@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: Rails
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22,9 +22,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.30080009, y: 1.53999996, z: -.55704999}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
+  m_LocalPosition: {x: -.861671984, y: -.569999993, z: 0}
+  m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -39,8 +39,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d0a96c41d53e84182b54ba02719faf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PrefabRail: {fileID: 400000, guid: bf539f8ef9244234e8367d8405349bff, type: 2}
-  Width: 1.21000004
+  PrefabRail: {fileID: 400000, guid: b0871d28e819fb7408e18defe8afbc98, type: 2}
+  Width: 1
   Count: 20
 --- !u!1001 &100100000
 Prefab:

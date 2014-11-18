@@ -42,7 +42,6 @@ public class World : MonoBehaviour
 				light = Network.Instantiate(this.prefabLight, this.prefabLight.transform.position, this.prefabLight.transform.rotation,0) as GameObject;
 			}
         }
-       
 	}
 	
 	// Update is called once per frame

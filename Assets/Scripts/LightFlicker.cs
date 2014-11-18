@@ -13,6 +13,8 @@ public class LightFlicker : MonoBehaviour {
     public float Interval = 1.0f;
     public bool Instant = false;
 
+    public bool AnimateScale = true;
+
     private SpriteRenderer _rend;
 	// Use this for initialization
 	void Start () {
@@ -23,8 +25,10 @@ public class LightFlicker : MonoBehaviour {
 
     IEnumerator Flicker() {
         while (true) {
-            var scale = Random.Range(ScaleMin, ScaleMax);
-            LeanTween.scale(this.gameObject, new Vector3(scale, scale, scale), !Instant ? Interval : 0.01f);
+            if (AnimateScale) {
+                var scale = Random.Range(ScaleMin, ScaleMax);
+                LeanTween.scale(this.gameObject, new Vector3(scale, scale, scale), !Instant ? Interval : 0.01f);
+            }
 
             var alpha = Random.Range(AlphaMin, AlphaMax);
             LeanTween.value(gameObject, 

@@ -16,7 +16,7 @@ public class AfraidOfTheDark : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Render () {
 	    var screenPosition = GameCamera.WorldToScreenPoint(Fille.position);
         var tex = new Texture2D(LightMap.width, LightMap.height);
 	    RenderTexture.active = LightMap;
