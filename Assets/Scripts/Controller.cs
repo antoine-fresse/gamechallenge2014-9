@@ -39,6 +39,10 @@ public class Controller : MonoBehaviour {
 	public float anglex;
 	public float angley;
 	public float anglez;
+
+	public float _x = 0.0f;
+	public float _y = 0.0f;
+	public float _z = 0.0f;
 	
 	// Use this for initialization
 	void Start () {
@@ -63,9 +67,7 @@ public class Controller : MonoBehaviour {
 		iy = Input.acceleration.y;
 		iz = Input.acceleration.z;
 
-		float _x = 0.0f;
-		float _y = 0.0f;
-		float _z = 0.0f;
+	
 
 		if (Mathf.Abs(x) >= borneX) {_x = Input.acceleration.x;}
 		if (Mathf.Abs(y) >= borneY) {_y = -Input.acceleration.y/2;}
@@ -96,11 +98,15 @@ public class Controller : MonoBehaviour {
 
 		//Papy
 		else {
+			if (Mathf.Abs(x) >= borneX) {_x = Input.acceleration.x/10;}
+			if (Mathf.Abs(y) >= borneY) {_y = -Input.acceleration.y/2;}
+			if (Mathf.Abs(z) >= borneZ) {_z = Input.acceleration.z;}
+
 			Input.gyro.enabled = true;
 			//Debug.Log(Input.gyro.enabled);
-			gx = Input.gyro.rotationRateUnbiased.x*10;
-			gy = Input.gyro.rotationRateUnbiased.y*10;
-			gz = Input.gyro.rotationRateUnbiased.z*10;
+			gx = Input.gyro.rotationRateUnbiased.x/***10**/;
+			gy = Input.gyro.rotationRateUnbiased.y/***10**/;
+			gz = Input.gyro.rotationRateUnbiased.z/10;
 
 			float vx = 0.0f;
 			float vy = 0.0f;
@@ -109,7 +115,7 @@ public class Controller : MonoBehaviour {
 			//transform.rotation = transform.rotation - transform.rotation;
 
 			if (Mathf.Abs(gz) >= borneGY){vz = 1.0f;}
-			Vector3 v =  new Vector3(0.0f,0.0f,vz*gz);
+			Vector3 v =  new Vector3(0.0f,0.0f,vz*gz*10);
 			//Light.transform.localRotation =  Quaternion.Euler(0.0f,0.0f,v.z);;
 			//float angle = Light.transform.rotation.eulerAngles.z;
 			/**anglex = q.eulerAngles.x;
@@ -136,7 +142,7 @@ public class Controller : MonoBehaviour {
 			/** Touches **/
 			if (Input.touchCount > 0) {
 				if (Bas.Contains (Input.GetTouch (0).position)) {
-					Papy.transform.Translate (0, 0, -0.05f);
+					//Papy.transform.Translate (0, 0, -0.05f);
 				}
 			}
 		}
