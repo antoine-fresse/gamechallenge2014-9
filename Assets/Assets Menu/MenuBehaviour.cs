@@ -17,9 +17,6 @@ public class MenuBehaviour : MonoBehaviour
     {
         for (int i = 0; i < this.menuPrincipal.Count; i++)
             this.menuPrincipal[i].gameObject.SetActive(true);
-        /*this.menuPrincipal[1].gameObject.SetActive(true);
-        this.menuPrincipal[2].gameObject.SetActive(true);
-        this.menuPrincipal[3].gameObject.SetActive(true);*/
         this.messageAttenteServeur.gameObject.SetActive(false);
         this.messageAttenteClient.gameObject.SetActive(false);
     }
@@ -29,15 +26,8 @@ public class MenuBehaviour : MonoBehaviour
         this.messageAttenteServeur.gameObject.SetActive(attServeur);
         this.messageAttenteClient.gameObject.SetActive(attClient);
         if (attServeur || attClient)
-        {
-
             for (int i = 0; i < this.menuPrincipal.Count; i++)
                 this.menuPrincipal[i].gameObject.SetActive(false);
-            /*this.menuPrincipal[0].gameObject.SetActive(false);
-            this.menuPrincipal[1].gameObject.SetActive(false);
-            this.menuPrincipal[2].gameObject.SetActive(false);
-            this.menuPrincipal[3].gameObject.SetActive(true);*/
-        }
 
         // Si on est un serveur, on attend des connexions :
         if (Network.peerType == NetworkPeerType.Server)
