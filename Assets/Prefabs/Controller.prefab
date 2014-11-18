@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &100000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400000}
+  - 114: {fileID: 11400000}
+  m_Layer: 0
+  m_Name: Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &400000
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 276899093ed17f047b82e667986b0e09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  World: {fileID: 100000, guid: aa195d8f3b3639d4da31d2df458953c1, type: 2}
+  Papy: {fileID: 100000, guid: 8d2fa607d96dd414594805bf202abcc9, type: 2}
+  Light: {fileID: 100000, guid: 0891d0ab479f52c488bb30acb7c171c1, type: 2}
+  Fille: {fileID: 100000, guid: 62bbfca6f5be32c4ebfc83fd524be447, type: 2}
+  Extincteur: {fileID: 100000, guid: d6515cf0db6ad4a41b091936b059b664, type: 2}
+  borneX: 0
+  borneY: 0
+  borneZ: 0
+  borneGX: 0
+  borneGY: 0
+  borneGZ: 0
+  xInit: 0
+  yInit: 0
+  zInit: 0
+  x: 0
+  y: 0
+  z: 0
+  ix: 0
+  iy: 0
+  iz: 0
+  gx: 0
+  gy: 0
+  gz: 0
+  anglex: 0
+  angley: 0
+  anglez: 0
+  _x: 0
+  _y: 0
+  _z: 0
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 100000}
+  m_IsPrefabParent: 1
+  m_IsExploded: 1

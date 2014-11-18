@@ -10,11 +10,10 @@ public class Player : MonoBehaviour
     private Vector3 syncStartPosition = Vector3.zero;
     private Vector3 syncEndPosition = Vector3.zero;
 
-    public World refWorld;
-
     // Victoire :
     private bool isArrived = false;
     public GameObject endZone;
+	public World refWorld;
 
     void Start()
     {
@@ -24,17 +23,19 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (networkView.isMine/*Network.peerType == NetworkPeerType.Client*/)
-        {
-            transform.Translate(Input.acceleration.x / 10.0f, 0, -Input.acceleration.z / 10.0f);
-        }
-        else
-        {
-            this.SyncedMovement();
-        }
+		if (! refWorld.testLocal){
+	        if (networkView.isMine/*Network.peerType == NetworkPeerType.Client*/)
+	        {
+	            transform.Translate(Input.acceleration.x / 10.0f, 0, -Input.acceleration.z / 10.0f);
+	        }
+	        else
+	        {
+	            this.SyncedMovement();
+	        }
+		}
     }
 
-    void OnCollisionEnter(Collision collision)
+    /**void OnCollisionEnter(Collision collision)
     {
         // Zone de fin
         if (collision.gameObject == this.endZone)
@@ -54,7 +55,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject == this.endZone)
             isArrived = false;
-    }
+    }**/
 
     private void SyncedMovement()
     {
@@ -66,28 +67,30 @@ public class Player : MonoBehaviour
 
     void OnSerializeNetworkView(BitStream stream, NetworkMessageInfo info)
     {
-        Vector3 syncPosition = Vector3.zero;
-        Vector3 syncVelocity = Vector3.zero;
-        if (stream.isWriting)
-        {
-            syncPosition = rigidbody.position;
-            stream.Serialize(ref syncPosition);
+		if (! refWorld.testLocal){
+	        Vector3 syncPosition = Vector3.zero;
+	        Vector3 syncVelocity = Vector3.zero;
+	        if (stream.isWriting)
+	        {
+	            syncPosition = rigidbody.position;
+	            stream.Serialize(ref syncPosition);
 
-            syncVelocity = rigidbody.velocity;
-            stream.Serialize(ref syncVelocity);
-        }
-        else
-        {
-            stream.Serialize(ref syncPosition);
-            stream.Serialize(ref syncVelocity);
+	            syncVelocity = rigidbody.velocity;
+	            stream.Serialize(ref syncVelocity);
+	        }
+	        else
+	        {
+	            stream.Serialize(ref syncPosition);
+	            stream.Serialize(ref syncVelocity);
 
-            syncTime = 0f;
-            syncDelay = Time.time - lastSynchronizationTime;
-            lastSynchronizationTime = Time.time;
+	            syncTime = 0f;
+	            syncDelay = Time.time - lastSynchronizationTime;
+	            lastSynchronizationTime = Time.time;
 
-            syncEndPosition = syncPosition + syncVelocity * syncDelay;
-            syncStartPosition = rigidbody.position;
-        }
+	            syncEndPosition = syncPosition + syncVelocity * syncDelay;
+	            syncStartPosition = rigidbody.position;
+	        }
+		}
     }
 
     [RPC]

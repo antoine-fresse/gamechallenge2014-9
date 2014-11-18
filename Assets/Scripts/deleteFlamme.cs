@@ -2,24 +2,15 @@
 using System.Collections;
 
 public class deleteFlamme : MonoBehaviour {
+	public float speed;
+	public float distance;
 
 	void Start(){
-		//Destroy (gameObject, 2f);
+		Destroy (gameObject, distance/(speed/128));
 	}
 
-	void FixedUpdate()
+	void Update()
 	{
-		Vector3 v = new Vector3 (transform.position.x, transform.position.y, transform.position.z + 0.1f);
-		transform.position = v;
-	}
-	void OnTriggerExit(Collider other){
-		Debug.Log (other.tag);
-		if (other.tag == "Fire")
-			Destroy (other);
-	}
-	void OnTriggerEnter(Collider other){
-		Debug.Log (other.tag);
-		if (other.tag == "Fire")
-			Destroy (other.gameObject);
+		transform.rigidbody.velocity = new Vector3(0.0f,0.0f,speed/128);
 	}
 }
