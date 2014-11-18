@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     // Victoire :
     private bool isArrived = false;
     public GameObject endZone;
+	public World refWorld;
 
     void Start()
     {

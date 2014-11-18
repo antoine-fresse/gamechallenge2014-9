@@ -5,11 +5,11 @@ using System.Collections;
 
 public class Controller : MonoBehaviour {
 
-	public GameObject World;
-	public GameObject Papy;
-	public GameObject Light;
-	public GameObject Fille;
-	public GameObject Extincteur;
+	public World w;
+	private GameObject Papy;
+	private GameObject Light;
+	private GameObject Fille;
+	private GameObject Extincteur;
 	public int borneX;
 	public int borneY;
 	public int borneZ;
@@ -52,7 +52,10 @@ public class Controller : MonoBehaviour {
 		Gauche = new Rect(0, 0 , Screen.width / 3, Screen.height);
 		Droite = new Rect(Screen.width - Screen.width / 3, 0 , Screen.width / 3, Screen.height);
 		Bas = new Rect(Screen.width / 3, 0, Screen.width - (Screen.width/3)*2, Screen.height/3);
-
+		Fille = w.fille;
+		Papy = w.papy;
+		Extincteur = w.extincteur;
+		Light = w.light;
 
 	}
 	
@@ -73,7 +76,7 @@ public class Controller : MonoBehaviour {
 		if (Mathf.Abs(y) >= borneY) {_y = -Input.acceleration.y/2;}
 		if (Mathf.Abs(z) >= borneZ) {_z = Input.acceleration.z;}
 
-		if (!World.gameObject.GetComponent<World> ().isPapy) {
+		if (!w.isPapy) {
 			//Fille
 			Fille.transform.Translate (_x, 0, -_y);
 
