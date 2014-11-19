@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 4ba94c4d15a7b244988e2a71f4983555
+=======
+guid: ec8b4a2e8e594304985d420f293e6b3a
+>>>>>>> 1295691f31ffc51c61d2b0c763ec66e86d8b6dcf
 AudioImporter:
   serializedVersion: 4
   format: 0
