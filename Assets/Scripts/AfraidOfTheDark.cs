@@ -17,11 +17,13 @@ public class AfraidOfTheDark : MonoBehaviour {
 	}
 
 	void Update (){
-		Debug.Log (CanMove);
+		//Debug.Log (CanMove);
+		//Render ();
 	}
 
 	// Update is called once per frame
 	void Render () {
+		Debug.Log ("toto");
 	    var screenPosition = GameCamera.WorldToScreenPoint(Fille.position);
         var tex = new Texture2D(LightMap.width, LightMap.height);
 	    RenderTexture.active = LightMap;
