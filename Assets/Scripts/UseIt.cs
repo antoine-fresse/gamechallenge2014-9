@@ -13,7 +13,7 @@ public class UseIt : MonoBehaviour {
 
 
     public void shoot() {
-        //networkView.RPC("shootRPC", RPCMode.All);
+        networkView.RPC("shootRPC", RPCMode.All);
 		shootRPC();
     }
 	// Update is called once per frame
