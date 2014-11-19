@@ -47,7 +47,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 118
   m_CollisionDetection: 0
 --- !u!65 &6500000
 BoxCollider:
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 128
-  distance: 15
+  duree: 1
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

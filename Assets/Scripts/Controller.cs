@@ -6,6 +6,7 @@ using System.Collections;
 public class Controller : MonoBehaviour {
 
 	public World w;
+	public GameObject soundManager;
 	private GameObject Papy;
 	private GameObject lumiere;
 	private GameObject Fille;
@@ -16,6 +17,7 @@ public class Controller : MonoBehaviour {
 	public int borneGX;
 	public int borneGY;
 	public int borneGZ;
+	private soundManager sManager;
 	
 	public float xInit;
 	public float yInit;
@@ -55,6 +57,7 @@ public class Controller : MonoBehaviour {
 		Gauche = new Rect(0, 0 , Screen.width / 3, Screen.height);
 		Droite = new Rect(Screen.width - Screen.width / 3, 0 , Screen.width / 3, Screen.height);
 		Bas = new Rect(Screen.width / 3, 0, Screen.width - (Screen.width/3)*2, Screen.height/3);
+		soundManager.GetComponent<soundManager> ();
 		if (w.testLocal) {
 			//Instanciations
 			Papy = w.papy;
@@ -76,7 +79,7 @@ public class Controller : MonoBehaviour {
 		iz = Input.acceleration.z;
 
 		if (Mathf.Abs(x) >= borneX) {_x = Input.acceleration.x/10;}
-		if (Mathf.Abs(y) >= borneY) {_y = Input.acceleration.y/30;}
+		if (Mathf.Abs(y) >= borneY) {_y = Input.acceleration.y;}
 		//if (Mathf.Abs(y) >= borneY) {_y = (y-last_y)/10;last_y = y;}
 		if (Mathf.Abs(z) >= borneZ) {_z = Input.acceleration.z;}
 
@@ -87,8 +90,9 @@ public class Controller : MonoBehaviour {
 			Extincteur = w.extincteur;
 
 			//Fille
-			Fille.transform.Translate (_x, 0, _y);
-
+			if (GameObject.Find("Main Camera").GetComponent<AfraidOfTheDark>().CanMove){
+			    Fille.transform.Translate (_x, 0, _y/30);
+			}
 			/** Touches **/
 			if (Input.touchCount > 0) {
 				if (Gauche.Contains (Input.GetTouch (0).position)) {
@@ -124,7 +128,7 @@ public class Controller : MonoBehaviour {
 			if (Mathf.Abs(gz) >= borneGY){vz = 1.0f;}
 			Vector3 v =  new Vector3(0.0f,0.0f,vz*gz*10);
 
-			lumiere.transform.rotation =  Quaternion.Euler(0.0f,0.0f,v.z);
+			lumiere.transform.localRotation =  Quaternion.Euler(0.0f,0.0f,v.z*3);
 			lumiere.transform.position = new Vector3(lumiere.transform.position.x+(_x),lumiere.transform.position.y,lumiere.transform.position.z);
 
 			/** Touches **/
@@ -136,11 +140,11 @@ public class Controller : MonoBehaviour {
 				}
 			}
 			else {Papy.GetComponent<Papy>().holdHand = false;}
+				//Papy.GetComponent<Animator>().SetBool("holdHand",Papy.GetComponent<Papy>().holdHand);**/
+		    //Papy.GetComponent<Papy>().holdHand = !Input.GetKey(KeyCode.A);
+		    
 
-		    Papy.GetComponent<Papy>().holdHand = !Input.GetKey(KeyCode.A);
-		    /** TODO Papy.GetComponent<Animator>().SetBool("holdHand",Papy.GetComponent<Papy>().holdHand);**/
-
-		}
+			}
 		}
 
 }

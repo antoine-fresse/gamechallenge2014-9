@@ -10,7 +10,7 @@ public class CameraFollow : MonoBehaviour {
     // Use this for initialization
 	void Start () {
 	    _transform = transform;
-		ToFollow = GameObject.FindGameObjectWithTag ("MainCamera").transform;
+		
 
 	    var l = GameObject.Find("Light(Clone)");
 	    if (l) 
