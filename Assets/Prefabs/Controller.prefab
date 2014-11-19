@@ -42,7 +42,7 @@ MonoBehaviour:
   w: {fileID: 0}
   soundManager: {fileID: 0}
   borneX: 0
-  borneY: 0
+  borneY: 5
   borneZ: 0
   borneGX: 0
   borneGY: 0

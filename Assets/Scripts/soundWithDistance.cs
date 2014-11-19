@@ -2,23 +2,19 @@
 using System.Collections;
 
 public class soundWithDistance : MonoBehaviour {
-	public float dangerLimit;
 	public float warningLimit;
+	public float dangerLimit;
 	public GameObject firewall;
-	public GameObject danger;
-	public GameObject warning;
 
 	private GameObject lenka;
 	private GameObject papy;
-	private AudioSource dangerSource;
-	private AudioSource warningSource;
+	public AudioSource warningSource;
+	public AudioSource dangerSource;
 
 	// Use this for initialization
 	void Start () {
 		lenka = GameObject.FindGameObjectWithTag ("Player");
 		papy = GameObject.FindGameObjectWithTag ("Papy");
-		dangerSource = danger.GetComponent<AudioSource> ();
-		warningSource = warning.GetComponent<AudioSource> ();
 	}
 
 	// Update is called once per frame
@@ -34,16 +30,13 @@ public class soundWithDistance : MonoBehaviour {
 		
 		//Debug.Log(dist);
 		if (dist < dangerLimit) {
-			warningSource.Stop ();
-			if(!dangerSource.isPlaying)
-				dangerSource.Play ();
+			dangerSource.mute = false;
 		}else if (dist < warningLimit) {
-			dangerSource.Stop ();
-			if(!warningSource.isPlaying)
-				warningSource.Play ();
+			warningSource.mute = false;
+			dangerSource.mute = true;
 		}else {
-			dangerSource.Stop ();
-			warningSource.Stop ();
+			dangerSource.mute = true;
+			warningSource.mute = true;
 		}
 	}
 }
