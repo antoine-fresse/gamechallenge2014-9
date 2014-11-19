@@ -1,16 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class collisionFire : MonoBehaviour {
+public class collisionFire : MonoBehaviour
+{
+    public World refWorld;
 
 	void OnTriggerEnter(Collider other){
 		if (other.tag == "Eau") {
 			Destroy (gameObject);
 			Destroy (other.gameObject);
 		}
-		if(other.tag == "Player")
+		if(other.tag == "Player" || other.tag == "Papy")
 		{
-			Destroy(other.gameObject);
+            // Il faut déclarer défaite
+            this.refWorld.declareDefeat();
 		}
 	}
 }
