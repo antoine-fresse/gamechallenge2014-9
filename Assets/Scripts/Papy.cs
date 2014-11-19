@@ -11,9 +11,8 @@ public class Papy : MonoBehaviour {
                 networkView.RPC("HasChanged", RPCMode.OthersBuffered, value);
             _holdHand = value;
         }
-
     }
-
+    
     public bool filleTouche; // On est collé la la fille;
 
     private Animator _animator;

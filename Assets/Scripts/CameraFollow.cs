@@ -10,9 +10,9 @@ public class CameraFollow : MonoBehaviour {
 	void Start () {
 	    _transform = transform;
 	    var l = GameObject.Find("Light(Clone)");
-	    if (l) {
+	    if (l) 
 	        ToFollow = l.transform;
-	    }
+	    
 	}
 	
 	// Update is called once per frame
@@ -20,16 +20,12 @@ public class CameraFollow : MonoBehaviour {
 	    if (!ToFollow) {
             var l = GameObject.Find("Light(Clone)");
             if (l)
-            {
                 ToFollow = l.transform;
-            }
 	    }
 
 	    if (!ToFollow) return;
 
-        if (Network.peerType == NetworkPeerType.Server)
-        {
-            _transform.position = new Vector3(Mathf.Max(ToFollow.position.x, FireWall.position.x + .8f), _transform.position.y, _transform.position.z);
-        }
+        _transform.position = new Vector3(Mathf.Max(ToFollow.position.x, FireWall.position.x+0.4f), _transform.position.y, _transform.position.z);
+        
 	}   
 }
