@@ -50,6 +50,11 @@ public class FilleAnimation : MonoBehaviour {
 
 	}
 
+    public void SetWalking(bool b) {
+        networkView.RPC("ChangeWalking", RPCMode.OthersBuffered, b);
+        ChangeWalking(b);
+    }
+
     [RPC]
     void HoldHands() {
         _animator.SetTrigger("holdHands");
@@ -58,6 +63,11 @@ public class FilleAnimation : MonoBehaviour {
     [RPC]
     void LetGo() {
         _animator.SetTrigger("letGo");
+    }
+
+    [RPC]
+    void ChangeWalking(bool b) {
+        _animator.SetBool("walking", b);
     }
 
 
