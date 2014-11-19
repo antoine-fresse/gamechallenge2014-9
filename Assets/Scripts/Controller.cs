@@ -7,7 +7,7 @@ public class Controller : MonoBehaviour {
 
 	public World w;
 	private GameObject Papy;
-	private GameObject l;
+	private GameObject lumiere;
 	private GameObject Fille;
 	private GameObject Extincteur;
 	public int borneX;
@@ -55,6 +55,13 @@ public class Controller : MonoBehaviour {
 		Gauche = new Rect(0, 0 , Screen.width / 3, Screen.height);
 		Droite = new Rect(Screen.width - Screen.width / 3, 0 , Screen.width / 3, Screen.height);
 		Bas = new Rect(Screen.width / 3, 0, Screen.width - (Screen.width/3)*2, Screen.height/3);
+		if (w.testLocal) {
+			//Instanciations
+			Papy = w.papy;
+			lumiere = w.l;
+			Fille = w.fille;
+			Extincteur = w.extincteur;
+		}
 	}
 	
 	// Update is called once per frame
@@ -69,7 +76,7 @@ public class Controller : MonoBehaviour {
 		iz = Input.acceleration.z;
 
 		if (Mathf.Abs(x) >= borneX) {_x = Input.acceleration.x/10;}
-		if (Mathf.Abs(y) >= borneY) {_y = Input.acceleration.y/10;}
+		if (Mathf.Abs(y) >= borneY) {_y = Input.acceleration.y/30;}
 		//if (Mathf.Abs(y) >= borneY) {_y = (y-last_y)/10;last_y = y;}
 		if (Mathf.Abs(z) >= borneZ) {_z = Input.acceleration.z;}
 
@@ -80,7 +87,7 @@ public class Controller : MonoBehaviour {
 			Extincteur = w.extincteur;
 
 			//Fille
-			Fille.transform.Translate (_x, 0, -_y);
+			Fille.transform.Translate (_x, 0, _y);
 
 			/** Touches **/
 			if (Input.touchCount > 0) {
@@ -91,7 +98,7 @@ public class Controller : MonoBehaviour {
 						Extincteur.transform.Translate (0.01f, 0, 0);
 				}
 				if (Bas.Contains (Input.GetTouch (0).position)) {
-						//*** TODO ****
+					Extincteur.GetComponent<UseIt>().shoot();
 				}
 			}
 			
@@ -101,7 +108,7 @@ public class Controller : MonoBehaviour {
 		else {
 			//Instanciations
 			Papy = w.papy;
-			l = w.l;
+			lumiere = w.l;
 			
 			// **** Recup données *****
 			if (Mathf.Abs(x) >= borneX) {_x = Input.acceleration.x/10;}
@@ -116,10 +123,9 @@ public class Controller : MonoBehaviour {
 			float vz = 0.0f;
 			if (Mathf.Abs(gz) >= borneGY){vz = 1.0f;}
 			Vector3 v =  new Vector3(0.0f,0.0f,vz*gz*10);
-			
 
-			l.transform.rotation =  Quaternion.Euler(0.0f,0.0f,v.z);
-			l.transform.position = new Vector3(l.transform.position.x+(_x),l.transform.position.y,l.transform.position.z);
+			lumiere.transform.rotation =  Quaternion.Euler(0.0f,0.0f,v.z);
+			lumiere.transform.position = new Vector3(lumiere.transform.position.x+(_x),lumiere.transform.position.y,lumiere.transform.position.z);
 
 			/** Touches **/
 			if (Input.touchCount > 0) {

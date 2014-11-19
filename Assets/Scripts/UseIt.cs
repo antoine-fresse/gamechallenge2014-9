@@ -7,7 +7,7 @@ public class UseIt : MonoBehaviour {
 	private float nextFire;
 	
 	// Update is called once per frame
-	void shoot () {
+	public void shoot () {
 		if (Time.time > nextFire)
 		{
 				nextFire = Time.time + fireRate;
