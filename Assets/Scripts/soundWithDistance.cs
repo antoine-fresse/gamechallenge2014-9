@@ -23,6 +23,12 @@ public class soundWithDistance : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+        if(!lenka)
+            lenka = GameObject.FindGameObjectWithTag("Player");
+        if (!papy)
+            papy = GameObject.FindGameObjectWithTag("Papy");
+	    if (!lenka || !papy)
+	        return;
 		float dist = Mathf.Min (lenka.transform.position.x - firewall.transform.position.x,
 		                        papy.transform.position.x - firewall.transform.position.x);
 		

@@ -25,7 +25,7 @@ public class AfraidOfTheDark : MonoBehaviour {
 	    if (!Fille) return;
 
         
-	    var screenPosition = GameCamera.WorldToScreenPoint(Fille.transform.position);
+	    var screenPosition = GameCamera.WorldToScreenPoint(Fille.transform.position + new Vector3(0f,0.33f,0f));
         
 
 	    if (screenPosition.x > 256f || screenPosition.x < 0f || screenPosition.y < 0f || screenPosition.y > 240f) {

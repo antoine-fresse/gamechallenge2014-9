@@ -3,10 +3,10 @@ using System.Collections;
 
 public class deleteFlamme : MonoBehaviour {
 	public float speed;
-	public float distance;
+	public float duree = 1.0f;
 
 	void Start(){
-		Destroy (gameObject, distance/(speed/128));
+		Destroy (gameObject, duree);
 	}
 
 	void Update()
