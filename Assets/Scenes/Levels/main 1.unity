@@ -4424,8 +4424,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 4.4161253, y: 1, z: 1.49614358}
+  m_Center: {x: .0325202942, y: 0, z: .24807179}
 --- !u!1 &558535762
 GameObject:
   m_ObjectHideFlags: 0
@@ -6845,7 +6845,7 @@ Transform:
   m_LocalScale: {x: .200000003, y: .400000006, z: .25}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 96
+  m_RootOrder: 95
 --- !u!1001 &828710316
 Prefab:
   m_ObjectHideFlags: 0
@@ -8561,7 +8561,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 93
+  m_RootOrder: 96
 --- !u!1001 &1131319694
 Prefab:
   m_ObjectHideFlags: 0
@@ -11001,7 +11001,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 94
+  m_RootOrder: 93
 --- !u!1001 &1449389408
 Prefab:
   m_ObjectHideFlags: 0
@@ -13984,7 +13984,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 95
+  m_RootOrder: 94
 --- !u!1001 &1993399661
 Prefab:
   m_ObjectHideFlags: 0
@@ -15053,6 +15053,22 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: -.268130004
       objectReference: {fileID: 0}
+    - target: {fileID: 6500000, guid: e18566da529fa664bb9e3bd8bd37bc86, type: 2}
+      propertyPath: m_Size.z
+      value: 1.49614358
+      objectReference: {fileID: 0}
+    - target: {fileID: 6500000, guid: e18566da529fa664bb9e3bd8bd37bc86, type: 2}
+      propertyPath: m_Center.z
+      value: .24807179
+      objectReference: {fileID: 0}
+    - target: {fileID: 6500000, guid: e18566da529fa664bb9e3bd8bd37bc86, type: 2}
+      propertyPath: m_Size.x
+      value: 4.4161253
+      objectReference: {fileID: 0}
+    - target: {fileID: 6500000, guid: e18566da529fa664bb9e3bd8bd37bc86, type: 2}
+      propertyPath: m_Center.x
+      value: .0325202942
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e18566da529fa664bb9e3bd8bd37bc86, type: 2}
   m_RootGameObject: {fileID: 544770596}
@@ -15203,7 +15219,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22400000, guid: 4ddc187698d40254c9193faf3008446a, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 22400000, guid: 4ddc187698d40254c9193faf3008446a, type: 2}
       propertyPath: m_AnchoredPosition.x
