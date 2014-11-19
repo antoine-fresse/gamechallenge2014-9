@@ -13,8 +13,13 @@ public class AfraidOfTheDark : MonoBehaviour {
     // Use this for initialization
 	void Start () {
 	    CanMove = true;
+		GameCamera = GameObject.Find ("Main Camera").camera;
 	}
-	
+
+	void Update (){
+		Debug.Log (CanMove);
+	}
+
 	// Update is called once per frame
 	void Render () {
 	    var screenPosition = GameCamera.WorldToScreenPoint(Fille.position);
@@ -24,6 +29,7 @@ public class AfraidOfTheDark : MonoBehaviour {
         tex.Apply();
 	    var lightIntensity = tex.GetPixel((int) screenPosition.x, (int) screenPosition.y).r;
         CanMove = (lightIntensity > 0.1f);
+
 	}
 
 

@@ -76,7 +76,7 @@ public class Controller : MonoBehaviour {
 		iz = Input.acceleration.z;
 
 		if (Mathf.Abs(x) >= borneX) {_x = Input.acceleration.x/10;}
-		if (Mathf.Abs(y) >= borneY) {_y = Input.acceleration.y/30;}
+		if (Mathf.Abs(y) >= borneY) {_y = Input.acceleration.y;}
 		//if (Mathf.Abs(y) >= borneY) {_y = (y-last_y)/10;last_y = y;}
 		if (Mathf.Abs(z) >= borneZ) {_z = Input.acceleration.z;}
 
@@ -87,8 +87,9 @@ public class Controller : MonoBehaviour {
 			Extincteur = w.extincteur;
 
 			//Fille
-			Fille.transform.Translate (_x, 0, _y);
-
+			if (Fille.GetComponent<AfraidOfTheDark>().CanMove){
+			    Fille.transform.Translate (_x, 0, _y/30);
+			}
 			/** Touches **/
 			if (Input.touchCount > 0) {
 				if (Gauche.Contains (Input.GetTouch (0).position)) {
@@ -124,7 +125,7 @@ public class Controller : MonoBehaviour {
 			if (Mathf.Abs(gz) >= borneGY){vz = 1.0f;}
 			Vector3 v =  new Vector3(0.0f,0.0f,vz*gz*10);
 
-			lumiere.transform.rotation =  Quaternion.Euler(0.0f,0.0f,v.z);
+			lumiere.transform.localRotation =  Quaternion.Euler(0.0f,0.0f,v.z*4);
 			lumiere.transform.position = new Vector3(lumiere.transform.position.x+(_x),lumiere.transform.position.y,lumiere.transform.position.z);
 
 			/** Touches **/
@@ -140,7 +141,7 @@ public class Controller : MonoBehaviour {
 		    Papy.GetComponent<Papy>().holdHand = Input.GetMouseButton(0);
 		    /** TODO Papy.GetComponent<Animator>().SetBool("holdHand",Papy.GetComponent<Papy>().holdHand);**/
 
-		}
+			}
 		}
 
 }
