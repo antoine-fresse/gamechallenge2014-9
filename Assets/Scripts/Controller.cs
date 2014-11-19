@@ -95,7 +95,7 @@ public class Controller : MonoBehaviour {
 			if (GameObject.Find("Main Camera").GetComponent<AfraidOfTheDark>().CanMove){
 				if (Mathf.Abs(_x) > 0 || Mathf.Abs(_y) > 0 ){
 					Fille.GetComponent<Animator>().SetBool("walking", true);
-					Fille.transform.Translate (_x, 0, _y/30);
+					Fille.transform.Translate (_x/30, 0, _y/30);
 				}
 				else {Fille.GetComponent<Animator>().SetBool("walking", false);}
 			}
