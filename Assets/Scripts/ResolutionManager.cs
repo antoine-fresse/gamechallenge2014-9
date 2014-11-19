@@ -5,7 +5,10 @@ using System.Collections;
 public class ResolutionManager : MonoBehaviour {
 
     public Canvas canvas;
-	
+
+    void Start() {
+        Screen.SetResolution(256,240,false);
+    }
 	// Update is called once per frame
 	void FixedUpdate () {
         var size = canvas.pixelRect;
