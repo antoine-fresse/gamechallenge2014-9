@@ -9,6 +9,8 @@ public class FilleAnimation : MonoBehaviour {
     private bool _holdHands;
     private bool _filleTouch;
     private bool _attached;
+
+    private Vector3 _lastPosition;
     // Use this for initialization
 	void Start () {
 	    _animator = GetComponent<Animator>();
@@ -31,13 +33,15 @@ public class FilleAnimation : MonoBehaviour {
 	    if ((_holdHands != _papy.holdHand) || (_filleTouch != _papy.filleTouche)) {
             
 	        if (_papy.holdHand && _papy.filleTouche) {
-                networkView.RPC("HoldHands", RPCMode.All);
+                networkView.RPC("HoldHands", RPCMode.OthersBuffered);
+                HoldHands();
 	            _papy.callHide();
 	            _attached = true;
 	        }
             else if ((_holdHands != _papy.holdHand) && !_papy.holdHand && _attached) {
                 _attached = false;
-                networkView.RPC("LetGo", RPCMode.All);
+                networkView.RPC("LetGo", RPCMode.OthersBuffered);
+                LetGo();
                 _papy.callShow(transform);
 	        }
             _holdHands = _papy.holdHand;

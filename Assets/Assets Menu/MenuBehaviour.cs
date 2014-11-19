@@ -66,7 +66,7 @@ public class MenuBehaviour : MonoBehaviour
     [RPC]
     public void launchGame()
     {
-        Network.SetLevelPrefix(1);
+        //Network.SetLevelPrefix(1);
         Application.LoadLevel(1);
     }
 

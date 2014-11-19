@@ -24,12 +24,14 @@ public class Papy : MonoBehaviour {
 	}
 
     public void callHide() {
-        networkView.RPC("Hide", RPCMode.All);
+        networkView.RPC("Hide", RPCMode.OthersBuffered);
+        Hide();
     }
 
     public void callShow(Transform t)
     {
-        networkView.RPC("Show", RPCMode.All, t.position);
+        networkView.RPC("Show", RPCMode.OthersBuffered, t.position);
+        Show(t.position);
     }
 
     [RPC]
