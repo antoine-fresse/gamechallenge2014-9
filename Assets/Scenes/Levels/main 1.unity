@@ -3115,7 +3115,7 @@ Prefab:
       objectReference: {fileID: 1130170635}
     - target: {fileID: 11400000, guid: aa195d8f3b3639d4da31d2df458953c1, type: 2}
       propertyPath: testLocal
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: aa195d8f3b3639d4da31d2df458953c1, type: 2}
       propertyPath: isPapy
@@ -9674,7 +9674,7 @@ MonoBehaviour:
   prefabLumiere: {fileID: 100000, guid: ea0d163e4fd9a0e44b526ecca4ed36b2, type: 2}
   prefabExtincteur: {fileID: 100000, guid: 64f9b536b2c8c4544a9daef3a5bd79ba, type: 2}
   isPapy: 0
-  testLocal: 1
+  testLocal: 0
   papy: {fileID: 0}
   fille: {fileID: 0}
   l: {fileID: 0}
