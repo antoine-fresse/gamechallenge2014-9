@@ -13,7 +13,7 @@ public class HowToPlay : MonoBehaviour {
 	}
 
 	public void afficherPapy(){
-		lenka.SetActive (false);
+		eau.SetActive (false);
 		papy.SetActive(true);
 	}
 

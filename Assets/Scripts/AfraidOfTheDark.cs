@@ -6,6 +6,7 @@ public class AfraidOfTheDark : MonoBehaviour {
     public static AfraidOfTheDark instance;
     public RenderTexture LightMap;
     private GameObject Fille;
+    private GameObject LightRail;
     public Camera GameCamera;
 
     public bool CanMove { get; private set; }
@@ -16,18 +17,33 @@ public class AfraidOfTheDark : MonoBehaviour {
 	    instance = this;
 	}
 
-    void Update() {
-        Fille = GameObject.Find("Fille(Clone)");
-    }
 	
 	// Update is called once per frame
-	void OnPostRender () {
-	    if (!Fille) return;
+	void Update() {
+	    if (!Fille || !LightRail) {
+	        Fille = GameObject.Find("Fille(Clone)");
+	        LightRail = GameObject.Find("Light(Clone)");
+	    }
+	    if (!Fille || !LightRail) return;
 
         
-	    var screenPosition = GameCamera.WorldToScreenPoint(Fille.transform.position + new Vector3(0f,0.33f,0f));
+	    var screenPositionLenka = GameCamera.WorldToScreenPoint(Fille.transform.position + new Vector3(0f,0.33f,0f));
+	    var screenPositionLight = GameCamera.WorldToScreenPoint(LightRail.transform.position);
+
+        var p1 = new Vector2(screenPositionLenka.x, screenPositionLenka.y);
+        var p2 = new Vector2(screenPositionLight.x, screenPositionLight.y);
+
+	    var v1 = p1 - p2;
+
+	    var ang = Vector2.Angle(v1, new Vector2(0f,-1f));
+
         
 
+	    CanMove = ang < 25f;
+
+        
+
+	    /*
 	    if (screenPosition.x > 256f || screenPosition.x < 0f || screenPosition.y < 0f || screenPosition.y > 240f) {
 	        CanMove = false;
 	        return;
@@ -39,9 +55,9 @@ public class AfraidOfTheDark : MonoBehaviour {
         tex.Apply();
 	    var lightIntensity = tex.GetPixel((int) screenPosition.x, (int) screenPosition.y).r;
         CanMove = (lightIntensity > 0.1f);
+        */
 
-        
-        
+
 	}
 
 

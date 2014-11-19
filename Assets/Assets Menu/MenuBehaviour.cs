@@ -105,8 +105,10 @@ public class MenuBehaviour : MonoBehaviour
     }
 
 
-
-
+	public void toHTPLevel()
+	{
+		Application.LoadLevel ("HTP");
+	}
 
 
     IEnumerator Menus() {

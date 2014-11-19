@@ -8,8 +8,10 @@ public class GrayscaleEffect : ImageEffectBase {
 
 	// Called by camera to apply image effect
 	void OnRenderImage (RenderTexture source, RenderTexture destination) {
-		material.SetTexture("_RampTex", textureRamp);
-		material.SetFloat("_RampOffset", rampOffset);
-		Graphics.Blit (source, destination, material);
+		if (Network.peerType == NetworkPeerType.Client) {
+			material.SetTexture ("_RampTex", textureRamp);
+			material.SetFloat ("_RampOffset", rampOffset);
+			Graphics.Blit (source, destination, material);
+		}
 	}
 }
