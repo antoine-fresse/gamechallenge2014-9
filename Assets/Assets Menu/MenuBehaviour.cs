@@ -26,22 +26,10 @@ public class MenuBehaviour : MonoBehaviour
     }
 
 
-    void Setup()
-    {
-        for (int i = 0; i < this.menuPrincipal.Count; i++)
-            this.menuPrincipal[i].gameObject.SetActive(true);
-        this.messageAttenteServeur.gameObject.SetActive(false);
-        this.messageAttenteClient.gameObject.SetActive(false);
-    }
+
 
     void Update()
     {
-        this.messageAttenteServeur.gameObject.SetActive(attServeur);
-        this.messageAttenteClient.gameObject.SetActive(attClient);
-        if (attServeur || attClient)
-            for (int i = 0; i < this.menuPrincipal.Count; i++)
-                this.menuPrincipal[i].gameObject.SetActive(false);
-
         // Si on est un serveur, on attend des connexions :
         if (Network.peerType == NetworkPeerType.Server)
         {

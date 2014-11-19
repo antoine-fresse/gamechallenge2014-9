@@ -21,3 +21,5 @@ EditorBuildSettings:
     path: Assets/Scenes/Victoire.unity
   - enabled: 1
     path: Assets/Scenes/Defaite.unity
+  - enabled: 1
+    path: Assets/Scenes/HTP.unity
