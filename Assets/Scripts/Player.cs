@@ -17,23 +17,19 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        if (Network.peerType == NetworkPeerType.Client && networkView.isMine)
-            this.changeColor();
+
     }
 
     void Update()
     {
 		if (! refWorld.testLocal){
-	        if (networkView.isMine/*Network.peerType == NetworkPeerType.Client*/)
-	        {
-	            transform.Translate(Input.acceleration.x / 10.0f, 0, -Input.acceleration.z / 10.0f);
-	        }
-	        else
+	        if (!networkView.isMine/*Network.peerType == NetworkPeerType.Client*/)
 	        {
 	            this.SyncedMovement();
 	        }
 		}
     }
+
 
     /**void OnCollisionEnter(Collision collision)
     {
@@ -91,14 +87,6 @@ public class Player : MonoBehaviour
 	            syncStartPosition = rigidbody.position;
 	        }
 		}
-    }
-
-    [RPC]
-    private void changeColor()
-    {
-        renderer.material.color = new Color(0.0f, 1.0f, 0.0f);
-        if (networkView.isMine)
-            networkView.RPC("changeColor", RPCMode.OthersBuffered);
     }
 
     // Victoire-défaite :

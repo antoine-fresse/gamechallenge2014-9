@@ -41,14 +41,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabPapy: {fileID: 100000, guid: 8d2fa607d96dd414594805bf202abcc9, type: 2}
   prefabFille: {fileID: 100000, guid: 62bbfca6f5be32c4ebfc83fd524be447, type: 2}
-  prefabLight: {fileID: 100000, guid: 0891d0ab479f52c488bb30acb7c171c1, type: 2}
+  prefabLumiere: {fileID: 100000, guid: 0891d0ab479f52c488bb30acb7c171c1, type: 2}
   prefabExtincteur: {fileID: 100000, guid: d6515cf0db6ad4a41b091936b059b664, type: 2}
   isPapy: 0
   testLocal: 1
   papy: {fileID: 0}
   fille: {fileID: 0}
-  light: {fileID: 0}
+  l: {fileID: 0}
   extincteur: {fileID: 0}
+  StartPosition: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

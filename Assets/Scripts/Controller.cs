@@ -75,27 +75,26 @@ public class Controller : MonoBehaviour {
 
 
 		if (!w.isPapy) {
-			if (w.testLocal){
 
-				Fille = w.fille;
-				Extincteur = w.extincteur;
+			Fille = w.fille;
+			Extincteur = w.extincteur;
 
-				//Fille
-				Fille.transform.Translate (_x, 0, -_y);
+			//Fille
+			Fille.transform.Translate (_x, 0, -_y);
 
-				/** Touches **/
-				if (Input.touchCount > 0) {
-					if (Gauche.Contains (Input.GetTouch (0).position)) {
-							Extincteur.transform.Translate (-0.01f, 0, 0);
-					}
-					if (Droite.Contains (Input.GetTouch (0).position)) {
-							Extincteur.transform.Translate (0.01f, 0, 0);
-					}
-					if (Bas.Contains (Input.GetTouch (0).position)) {
-							//*** TODO ****
-					}
+			/** Touches **/
+			if (Input.touchCount > 0) {
+				if (Gauche.Contains (Input.GetTouch (0).position)) {
+						Extincteur.transform.Translate (-0.01f, 0, 0);
+				}
+				if (Droite.Contains (Input.GetTouch (0).position)) {
+						Extincteur.transform.Translate (0.01f, 0, 0);
+				}
+				if (Bas.Contains (Input.GetTouch (0).position)) {
+						//*** TODO ****
 				}
 			}
+			
 		}
 
 		//Papy
@@ -125,7 +124,7 @@ public class Controller : MonoBehaviour {
 			/** Touches **/
 			if (Input.touchCount > 0) {
 				for (int i = 0; i < Input.touchCount; i++){
-					if (Droite.Contains (Input.GetTouch (i).position)) {Papy.GetComponent<Papy>().holdHand = true;/}
+					if (Droite.Contains (Input.GetTouch (i).position)) {Papy.GetComponent<Papy>().holdHand = true;}
 					else {Papy.GetComponent<Papy>().holdHand = false;}
 					if (Bas.Contains (Input.GetTouch (i).position)) {/**TODO **//**Debug.Log("EN BAS");**/}
 				}
@@ -136,7 +135,5 @@ public class Controller : MonoBehaviour {
 			}
 		}
 
-	}
 }
-
 
