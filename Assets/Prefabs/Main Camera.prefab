@@ -14,10 +14,8 @@ GameObject:
   - 81: {fileID: 8100000}
   - 114: {fileID: 11400000}
   - 148: {fileID: 14800000}
-  - 114: {fileID: 11400004}
   - 114: {fileID: 11400006}
   - 65: {fileID: 6500000}
-  - 114: {fileID: 11400008}
   - 114: {fileID: 11400010}
   m_Layer: 0
   m_Name: Main Camera
@@ -61,38 +59,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &100006
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 400006}
-  - 82: {fileID: 8200002}
-  m_Layer: 0
-  m_Name: Danger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &100008
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 400008}
-  - 82: {fileID: 8200004}
-  m_Layer: 0
-  m_Name: Warning
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &100010
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,6 +68,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 400010}
   - 82: {fileID: 8200006}
+  - 82: {fileID: 8200004}
+  - 82: {fileID: 8200002}
+  - 114: {fileID: 11400004}
   m_Layer: 0
   m_Name: MultiTrackManager
   m_TagString: Untagged
@@ -116,7 +85,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.307410002, y: .569999993, z: -1.85000002}
+  m_LocalPosition: {x: -.394219995, y: -.0330829993, z: -2.69770002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -148,30 +117,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 400000}
   m_RootOrder: 1
---- !u!4 &400006
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100006}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 400010}
-  m_RootOrder: 1
---- !u!4 &400008
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100008}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 400010}
-  m_RootOrder: 0
 --- !u!4 &400010
 Transform:
   m_ObjectHideFlags: 1
@@ -181,9 +126,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 400008}
-  - {fileID: 400006}
+  m_Children: []
   m_Father: {fileID: 400000}
   m_RootOrder: 2
 --- !u!20 &2000000
@@ -332,11 +275,11 @@ AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100006}
+  m_GameObject: {fileID: 100010}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 4fea11f27fbd7c04d8ed4bc6cb2059d9, type: 3}
-  m_PlayOnAwake: 0
+  m_audioClip: {fileID: 8300000, guid: 7b06d67042393834ab6a62ffa7def87c, type: 3}
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -390,12 +333,12 @@ AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100008}
+  m_GameObject: {fileID: 100010}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: a9fe07f292b5fdd43833d33c6a8b0baf, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
+  m_audioClip: {fileID: 8300000, guid: d7957d24a0a9652449f4201e186dcf8f, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: .349999994
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -451,9 +394,9 @@ AudioSource:
   m_GameObject: {fileID: 100010}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 9479200ca87ee8e498d70fbc49be8a98, type: 3}
+  m_audioClip: {fileID: 8300000, guid: bd180b58ae3fcfb44831832f0cebfb2a, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: .449999988
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -538,27 +481,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44e086a90f264d344821f3fe0fb04624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wet: {fileID: 8300000, guid: 9f5eb49d01e4ce64492bc9ff3a267a4b, type: 3}
-  burn: {fileID: 8300000, guid: 7bb0de7f18affa84ab3d1b57462b495c, type: 3}
-  laugh: {fileID: 8300000, guid: fc0f40eabfa12504cb0fc29c17b3c122, type: 3}
-  afraid: {fileID: 8300000, guid: 852624f3132b73e4cb8a8c231437345b, type: 3}
-  go: {fileID: 8300000, guid: 14e62ff22d4369945a1439ea5f44e352, type: 3}
+  wet: {fileID: 8300000, guid: c055d15eedb241b47b01b29b4e4d6568, type: 3}
+  burn: {fileID: 8300000, guid: 7487a60c1b60e2545868cb9ae1e4ce91, type: 3}
+  laugh: {fileID: 8300000, guid: 51896f6f45aadf74186111d4ca436217, type: 3}
+  afraid: {fileID: 8300000, guid: bca436cb65580aa46a9ab49c8c3f6aa6, type: 3}
+  go: {fileID: 8300000, guid: df359bb0211e6474c92aadc7044aee70, type: 3}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
+  m_GameObject: {fileID: 100010}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8fc04f4e4b53b8b42b624ea6b5fddbac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dangerLimit: .5
-  warningLimit: 1
+  warningLimit: 2
+  dangerLimit: .699999988
   firewall: {fileID: 0}
-  danger: {fileID: 100008}
-  warning: {fileID: 100006}
+  warningSource: {fileID: 8200004}
+  dangerSource: {fileID: 8200002}
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -572,20 +515,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LightMap: {fileID: 8400000, guid: 59be5321840fc9d44bb023c7632764fb, type: 2}
   GameCamera: {fileID: 2000000}
---- !u!114 &11400008
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 243a781cad112c75d0008dfa8d76c639, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shader: {fileID: 0}
-  textureRamp: {fileID: 0}
-  rampOffset: 0
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1
