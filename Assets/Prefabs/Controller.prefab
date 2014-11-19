@@ -39,11 +39,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 276899093ed17f047b82e667986b0e09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  World: {fileID: 100000, guid: aa195d8f3b3639d4da31d2df458953c1, type: 2}
-  Papy: {fileID: 100000, guid: 8d2fa607d96dd414594805bf202abcc9, type: 2}
-  Light: {fileID: 100000, guid: 0891d0ab479f52c488bb30acb7c171c1, type: 2}
-  Fille: {fileID: 100000, guid: 62bbfca6f5be32c4ebfc83fd524be447, type: 2}
-  Extincteur: {fileID: 100000, guid: d6515cf0db6ad4a41b091936b059b664, type: 2}
+  w: {fileID: 0}
+  soundManager: {fileID: 0}
   borneX: 0
   borneY: 0
   borneZ: 0
