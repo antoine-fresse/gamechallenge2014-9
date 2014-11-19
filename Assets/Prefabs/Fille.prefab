@@ -148,14 +148,13 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe5032e8218002442a67b6a0bae9d0a6, type: 3}
+  m_Script: {fileID: 11500000, guid: 93567a1c5aa12ff47b164c355a8c365a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LightMap: {fileID: 8400000, guid: 59be5321840fc9d44bb023c7632764fb, type: 2}
-  Fille: {fileID: 400000}
-  GameCamera: {fileID: 0}
+  LightT: {fileID: 0}
+  Speed: 25
 --- !u!148 &14800000
 NetworkView:
   m_ObjectHideFlags: 1

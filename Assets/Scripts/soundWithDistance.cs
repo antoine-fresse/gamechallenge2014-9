@@ -26,7 +26,7 @@ public class soundWithDistance : MonoBehaviour {
 		float dist = Mathf.Min (lenka.transform.position.x - firewall.transform.position.x,
 		                        papy.transform.position.x - firewall.transform.position.x);
 		
-		Debug.Log(dist);
+		//Debug.Log(dist);
 		if (dist < dangerLimit) {
 			warningSource.Stop ();
 			if(!dangerSource.isPlaying)
