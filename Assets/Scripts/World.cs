@@ -54,4 +54,26 @@ public class World : MonoBehaviour
     {
         Application.LoadLevel("Menu");
     }
+
+    public void declareDefeat()
+    {
+        networkView.RPC("defeat", RPCMode.AllBuffered);
+    }
+
+    [RPC]
+    private void defeat()
+    {
+        Application.LoadLevel("Defaite");
+    }
+
+    public void declareVictory()
+    {
+        networkView.RPC("victory", RPCMode.AllBuffered);
+    }
+
+    [RPC]
+    private void victory()
+    {
+        Application.LoadLevel("Victoire");
+    }
 }

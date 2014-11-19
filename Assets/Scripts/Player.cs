@@ -87,35 +87,5 @@ public class Player : MonoBehaviour
 	            syncStartPosition = rigidbody.position;
 	        }*/
 		}
-    }
-
-    // Victoire-défaite :
-    // Utiliser declareVictory() pour faire gagner la partie
-    // Utiliser declareDefeat() pour faire perdre la partie
-    // NE PAS UTILISER victory() NI defeat()
-
-    public void declareVictory()
-    {
-        networkView.RPC("victory", RPCMode.OthersBuffered);
-    }
-    public void declareDefeat()
-    {
-        networkView.RPC("defeat", RPCMode.OthersBuffered);
-    }
-
-    [RPC]
-    private void victory()
-    {
-        if (isArrived)
-        {
-            networkView.RPC("victory", RPCMode.OthersBuffered);
-            Application.LoadLevel("Victoire");
-        }
-    }
-
-    [RPC]
-    private void defeat()
-    {
-        Application.LoadLevel("Defaite");
-    }
+    } 
 }
