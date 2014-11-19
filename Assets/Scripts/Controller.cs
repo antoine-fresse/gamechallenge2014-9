@@ -90,7 +90,7 @@ public class Controller : MonoBehaviour {
 			Extincteur = w.extincteur;
 
 			//Fille
-			if (Fille.GetComponent<AfraidOfTheDark>().CanMove){
+			if (GameObject.Find("Main Camera").GetComponent<AfraidOfTheDark>().CanMove){
 			    Fille.transform.Translate (_x, 0, _y/30);
 			}
 			/** Touches **/
