@@ -131,7 +131,7 @@ public class Controller : MonoBehaviour {
 			}
 			else {Papy.GetComponent<Papy>().holdHand = false;}
 
-		    Papy.GetComponent<Papy>().holdHand = Input.GetMouseButton(0);
+		    Papy.GetComponent<Papy>().holdHand = !Input.GetKey(KeyCode.A);
 		    /** TODO Papy.GetComponent<Animator>().SetBool("holdHand",Papy.GetComponent<Papy>().holdHand);**/
 
 		}
