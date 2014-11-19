@@ -29,7 +29,7 @@ public class World : MonoBehaviour
         }
         else
         {
-            if (Network.peerType == NetworkPeerType.Client)
+            if (Network.peerType == NetworkPeerType.Server)
             {
                 this.isPapy = false;
                 fille = Network.Instantiate(this.prefabFille, StartPosition.position + new Vector3(0.25f, 0f, 0f), Quaternion.identity, 0) as GameObject;
