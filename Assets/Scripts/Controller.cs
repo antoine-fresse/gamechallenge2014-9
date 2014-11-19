@@ -6,6 +6,7 @@ using System.Collections;
 public class Controller : MonoBehaviour {
 
 	public World w;
+	public GameObject soundManager;
 	private GameObject Papy;
 	private GameObject lumiere;
 	private GameObject Fille;
@@ -16,6 +17,7 @@ public class Controller : MonoBehaviour {
 	public int borneGX;
 	public int borneGY;
 	public int borneGZ;
+	private soundManager sManager;
 	
 	public float xInit;
 	public float yInit;
@@ -55,6 +57,7 @@ public class Controller : MonoBehaviour {
 		Gauche = new Rect(0, 0 , Screen.width / 3, Screen.height);
 		Droite = new Rect(Screen.width - Screen.width / 3, 0 , Screen.width / 3, Screen.height);
 		Bas = new Rect(Screen.width / 3, 0, Screen.width - (Screen.width/3)*2, Screen.height/3);
+		soundManager.GetComponent<soundManager> ();
 		if (w.testLocal) {
 			//Instanciations
 			Papy = w.papy;
