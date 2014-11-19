@@ -32,14 +32,14 @@ public class World : MonoBehaviour
             if (Network.peerType == NetworkPeerType.Client)
             {
                 this.isPapy = false;
-                fille = Network.Instantiate(this.prefabFille, this.prefabFille.transform.position, this.prefabFille.transform.rotation, 0) as GameObject;
-				extincteur = Network.Instantiate(this.prefabExtincteur, this.prefabExtincteur.transform.position, this.prefabExtincteur.transform.rotation,0)as GameObject;
+                fille = Network.Instantiate(this.prefabFille, StartPosition.position + new Vector3(0.25f, 0f, 0f), Quaternion.identity, 0) as GameObject;
+                var extPos = new Vector3(StartPosition.position.x, StartPosition.position.y, -0.75f);
+                extincteur = Network.Instantiate(this.prefabExtincteur, extPos, Quaternion.identity, 0) as GameObject;
 			}
             else
             {
                 this.isPapy = true;
-				papy = Network.Instantiate(this.prefabPapy, this.prefabPapy.transform.position, this.prefabPapy.transform.rotation, 0) as GameObject;
-                Debug.Log("toto");
+                papy = Network.Instantiate(this.prefabPapy, StartPosition.position, Quaternion.identity, 0) as GameObject;
                 l = Network.Instantiate(this.prefabLumiere, this.prefabLumiere.transform.position, this.prefabLumiere.transform.rotation, 0) as GameObject;
 			}
         }

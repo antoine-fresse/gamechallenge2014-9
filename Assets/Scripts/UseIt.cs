@@ -5,9 +5,19 @@ public class UseIt : MonoBehaviour {
 	public GameObject water;
 	public float fireRate;
 	private float nextFire;
-	
+
+    void Update() {
+        if (Input.GetKeyUp(KeyCode.Space))
+            shoot();
+    }
+
+
+    public void shoot() {
+        networkView.RPC("shootRPC", RPCMode.All);
+    }
 	// Update is called once per frame
-	public void shoot () {
+	[RPC]
+    void shootRPC () {
 		if (Time.time > nextFire)
 		{
 				nextFire = Time.time + fireRate;

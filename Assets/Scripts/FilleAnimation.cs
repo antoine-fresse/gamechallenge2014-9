@@ -11,7 +11,7 @@ public class FilleAnimation : MonoBehaviour {
     private bool _attached;
     // Use this for initialization
 	void Start () {
-	    _animator = transform.parent.gameObject.GetComponent<Animator>();
+	    _animator = GetComponent<Animator>();
 	    var papy = GameObject.FindGameObjectWithTag("Papy");
 	    if (papy)
 	        _papy = papy.GetComponent<Papy>();
@@ -31,21 +31,30 @@ public class FilleAnimation : MonoBehaviour {
 	    if ((_holdHands != _papy.holdHand) || (_filleTouch != _papy.filleTouche)) {
             
 	        if (_papy.holdHand && _papy.filleTouche) {
-	            _animator.SetTrigger("holdHands");
-	            _papy.Hide();
+                networkView.RPC("HoldHands", RPCMode.All);
+	            _papy.callHide();
 	            _attached = true;
 	        }
             else if ((_holdHands != _papy.holdHand) && !_papy.holdHand && _attached) {
                 _attached = false;
-                _animator.SetTrigger("letGo");
-                _papy.Show(transform);
+                networkView.RPC("LetGo", RPCMode.All);
+                _papy.callShow(transform);
 	        }
             _holdHands = _papy.holdHand;
 	        _filleTouch = _papy.filleTouche;
 	    }
-	    
-
-
 
 	}
+
+    [RPC]
+    void HoldHands() {
+        _animator.SetTrigger("holdHands");
+    }
+
+    [RPC]
+    void LetGo() {
+        _animator.SetTrigger("letGo");
+    }
+
+
 }
