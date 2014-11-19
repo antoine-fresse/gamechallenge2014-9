@@ -67,7 +67,7 @@ public class MenuBehaviour : MonoBehaviour
     public void launchGame()
     {
         Network.SetLevelPrefix(1);
-        Application.LoadLevel("main");
+        Application.LoadLevel(1);
     }
 
     public void quitGame()
