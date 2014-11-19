@@ -8,7 +8,7 @@ public class collisionFire : MonoBehaviour
     void Update() {
         var w = GameObject.Find("World");
         if (w)
-            refWorld.GetComponent<World>();
+            w.GetComponent<World>();
     }
 
 	void OnTriggerEnter(Collider other){
