@@ -3,68 +3,63 @@ using System.Collections;
 
 public class Papy : MonoBehaviour {
 	
-	public bool holdHand;
-	public bool filleTouche;
-	public bool touchPlayer;
-	
+	public bool holdHand; // On appuie sur l'ecran
+	public bool filleTouche; // On est collé la la fille;
+
+    private Animator _animator;
 	// Use this for initialization
 	void Start () {
 		holdHand = false;
 		filleTouche = false;
-		touchPlayer = false;
+	    _animator = GetComponent<Animator>();
 	}
-	
+
+    [RPC]
+    public void Hide() {
+        _animator.SetBool("hidden", true);
+        collider.enabled = false;
+        
+    }
+
+    [RPC]
+    public void Show(Transform t) {
+        _animator.SetBool("hidden", false);
+        collider.enabled = true;
+        transform.position = t.position + new Vector3(-0.215f, 0f,0f);
+    }
+
+
 	// Update is called once per frame
 	void Update () {
-		
+		_animator.SetBool("holdHand", holdHand);
 	}
 	
 	void OnTriggerEnter(Collider c){
 		if (c.gameObject.tag == "Player"){
-			filleTouche = true;
-			touchPlayer = true;
+			//filleTouche = true;
+
 		}
 	}
 	
 	void OnTriggerStay(Collider c){
 		if (c.gameObject.tag == "Player"){
-			if (touchOnRight(c)){
-				holdHand = true;
-				//touchPlayer = true;
+			if (TouchOnRight(c)){
+				filleTouche = true;
 			}
-			
 		} 
 	}
 	
 	void OnTriggerExit(Collider c){
-		if (c.gameObject.tag == "Player"){
-			if (touchOnRight(c)){
-				holdHand = false;
-			}
-			touchPlayer = false;
+		if (c.gameObject.tag == "Player") {
+		    filleTouche = false;
 		} 
 	}
 	
-	bool touchOnRight(Collider c) {
-		/**Debug.Log (c.gameObject.GetComponent<BoxCollider> ().size.x);
-		Debug.Log (GetComponent<BoxCollider>().size.x );**/
-		/**Debug.Log (c.gameObject.transform.position.x );
-		Debug.Log ("-");
-		Debug.Log (c.gameObject.GetComponent<BoxCollider>().size.x/2 );
-		Debug.Log ("==");
-		Debug.Log (transform.position.x);
-		Debug.Log ("+");
-		Debug.Log ( GetComponent<BoxCollider>().size.x/2);
-		Debug.Log (":");
-		Debug.Log (c.gameObject.transform.position.x - c.gameObject.GetComponent<BoxCollider>().size.x/2 );
-		Debug.Log ("=");
-		Debug.Log (transform.position.x + GetComponent<BoxCollider>().size.x/2);**/
-		return (/**c.gameObject.transform.position.x - transform.position.x == c.gameObject.transform.position.x -  transform.position.x  
-		        && c.gameObject.transform.position.x > transform.position.x
-		        && transform.**/
-		        Mathf.Abs (c.gameObject.transform.position.x - c.gameObject.GetComponent<BoxCollider>().size.x/2 - transform.position.x - GetComponent<BoxCollider>().size.x/2) 	<= 0.1
-		        /**&& c.gameObject.transform.position.y - c.gameObject.GetComponent<BoxCollider>().size.y/2 >= transform.position.y + GetComponent<BoxCollider>().size.y/2
-		        && c.gameObject.transform.position.z - c.gameObject.GetComponent<BoxCollider>().size.z/2 >= transform.position.z + GetComponent<BoxCollider>().size.z/2**/);
+	public bool TouchOnRight(Collider c) {
+	    float dist = Mathf.Abs(c.gameObject.transform.position.x - transform.position.x - 0.2f);
+
+        //Debug.Log(dist);
+	    return dist <= 0.2f;
 	}
 	
 	

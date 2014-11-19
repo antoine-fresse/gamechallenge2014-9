@@ -129,10 +129,12 @@ public class Controller : MonoBehaviour {
 					if (Bas.Contains (Input.GetTouch (i).position)) {/**TODO **//**Debug.Log("EN BAS");**/}
 				}
 			}
-			else {Papy.GetComponent<Papy>().holdHand = true;}
-			/** TODO Papy.GetComponent<Animator>().SetBool("holdHand",Papy.GetComponent<Papy>().holdHand);**/
-		
-			}
+			else {Papy.GetComponent<Papy>().holdHand = false;}
+
+		    Papy.GetComponent<Papy>().holdHand = Input.GetMouseButton(0);
+		    /** TODO Papy.GetComponent<Animator>().SetBool("holdHand",Papy.GetComponent<Papy>().holdHand);**/
+
+		}
 		}
 
 }

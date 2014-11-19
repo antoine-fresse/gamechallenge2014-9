@@ -66,7 +66,7 @@ public class Player : MonoBehaviour
 		if (! refWorld.testLocal){
 	        Vector3 syncPosition = Vector3.zero;
 	        Vector3 syncVelocity = Vector3.zero;
-	        if (stream.isWriting)
+	        /*if (stream.isWriting)
 	        {
 	            syncPosition = rigidbody.position;
 	            stream.Serialize(ref syncPosition);
@@ -85,7 +85,7 @@ public class Player : MonoBehaviour
 
 	            syncEndPosition = syncPosition + syncVelocity * syncDelay;
 	            syncStartPosition = rigidbody.position;
-	        }
+	        }*/
 		}
     }
 
