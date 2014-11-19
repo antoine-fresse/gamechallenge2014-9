@@ -19,17 +19,17 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 21300000, guid: 0927ea9422697df4a93cfd3f57fd1fb5, type: 3}
-    - time: .125
+    - time: .200000003
       value: {fileID: 21300000, guid: 324bbabd4ed3d5f49bd94917f25f6639, type: 3}
-    - time: .25
+    - time: .400000006
       value: {fileID: 21300000, guid: 4f8ec9aac2bbf404a9b735ceac47b324, type: 3}
-    - time: .375
+    - time: .600000024
       value: {fileID: 21300000, guid: 8697961a0a3113e4b828cf1fc929ac95, type: 3}
     attribute: m_Sprite
     path: 
-    classID: 212
-    script: {fileID: 0}
-  m_SampleRate: 8
+    classID: 114
+    script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_SampleRate: 5
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -37,10 +37,10 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - path: 0
-      attribute: 0
-      script: {fileID: 0}
-      classID: 212
-      customType: 23
+      attribute: 2015549526
+      script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+      classID: 114
+      customType: 0
       isPPtrCurve: 1
     pptrCurveMapping:
     - {fileID: 21300000, guid: 0927ea9422697df4a93cfd3f57fd1fb5, type: 3}
@@ -50,7 +50,7 @@ AnimationClip:
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: .5
+    m_StopTime: .800000012
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

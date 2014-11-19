@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -9,9 +10,21 @@ public class MenuBehaviour : MonoBehaviour
     public List<GameObject> menuPrincipal;
     public GameObject messageAttenteServeur;
     public GameObject messageAttenteClient;
+
+    public Image EcranTitre;
+
+    public Image EcranJoin;
+    public Image EcranHost;
+
     // Deux variables dégeulasses néccessaires :
     private bool attServeur = false;
     private bool attClient = false;
+
+
+    void Start() {
+        StartCoroutine(Menus());
+    }
+
 
     void Setup()
     {
@@ -43,7 +56,11 @@ public class MenuBehaviour : MonoBehaviour
 
     public void launchGameClient()
     {
+
+
         this.attClient = true;
+
+        EcranJoin.gameObject.SetActive(true);
 
         // On tente de se connecter en tant que client
         if (Network.Connect(IP, Port) != NetworkConnectionError.NoError)
@@ -56,6 +73,7 @@ public class MenuBehaviour : MonoBehaviour
 
     public void launchGameServer()
     {
+        EcranHost.gameObject.SetActive(true);
         bool useNat = !Network.HavePublicAddress();
         if (Network.InitializeServer(2, Port, useNat) == NetworkConnectionError.NoError)
             this.attServeur = true; // Serveur créé !
@@ -85,4 +103,18 @@ public class MenuBehaviour : MonoBehaviour
     {
         Application.LoadLevel("Credits");
     }
+
+
+
+
+
+
+    IEnumerator Menus() {
+        yield return new WaitForSeconds(3f);
+        EcranTitre.enabled = false;
+    }
+
+
+
+
 }
