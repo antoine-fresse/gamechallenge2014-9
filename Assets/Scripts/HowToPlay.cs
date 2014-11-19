@@ -22,6 +22,12 @@ public class HowToPlay : MonoBehaviour {
 		lumiere.SetActive(true);
 	}
 
+	public void afficherEau()
+	{
+		lenka.SetActive (false);
+		eau.SetActive(true);
+	}
+
 	public void retourMenu(){
 		Application.LoadLevel ("Menu");
 	}
