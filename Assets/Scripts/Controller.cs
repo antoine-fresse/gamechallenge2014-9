@@ -149,11 +149,12 @@ public class Controller : MonoBehaviour {
 				}
 			}
 			else {Papy.GetComponent<Papy>().holdHand = false;}
-				//Papy.GetComponent<Animator>().SetBool("holdHand",Papy.GetComponent<Papy>().holdHand);**/
-		    //Papy.GetComponent<Papy>().holdHand = !Input.GetKey(KeyCode.A);
+			
+		    
 		    
 
 			}
+            //Papy.GetComponent<Papy>().holdHand = !Input.GetKey(KeyCode.A);
 		}
 
 }

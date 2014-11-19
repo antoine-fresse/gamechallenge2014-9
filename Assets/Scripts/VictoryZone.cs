@@ -5,31 +5,31 @@ public class VictoryZone : MonoBehaviour
 {
     public World refWorld;
 
-    private bool papyIn;
-    private bool lenkaIn;
-
 	// Use this for initialization
 	void Start () {
-        papyIn = false;
-        lenkaIn = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+	    if (!refWorld) {
+	        var world = GameObject.Find("World");
+	        if (world)
+	            refWorld = world.GetComponent<World>();
+	    }
+
 	}
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
         if (other.tag == "Player")
         {
-            lenkaIn = true;
+            
+            if (other.gameObject.GetComponent<FilleAnimation>().Attached) {
+
+                refWorld.declareVictory();
+
+            }
         }
-        else if (other.tag == "Papy")
-        {
-            papyIn = true;
-        }
-        if (papyIn && lenkaIn)
-            this.refWorld.declareVictory();
+
     }
 }
