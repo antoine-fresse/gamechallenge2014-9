@@ -137,7 +137,7 @@ public class Controller : MonoBehaviour {
 			if (Mathf.Abs(gz) >= borneGY){vz = 1.0f;}
 			Vector3 v =  new Vector3(0.0f,0.0f,vz*gz*10);
 
-			//lumiere.transform.localRotation =  Quaternion.Euler(0.0f,0.0f,v.z*3);
+			//  lumiere.transform.localRotation =  Quaternion.Euler(0.0f,0.0f,v.z*3);
 			lumiere.transform.position = new Vector3(lumiere.transform.position.x+(_x),lumiere.transform.position.y,lumiere.transform.position.z);
 
 			/** Touches **/
