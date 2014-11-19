@@ -78,9 +78,11 @@ public class Controller : MonoBehaviour {
 		iy = Input.acceleration.y;
 		iz = Input.acceleration.z;
 
-		if (Mathf.Abs(x) >= borneX) {_x = Input.acceleration.x/10;}
+		_x = 0.0f;
+		_y = 0.0f;
+		_z = 0.0f;
+		if (Mathf.Abs(x) >= borneX) {_x = Input.acceleration.x;}
 		if (Mathf.Abs(y) >= borneY) {_y = Input.acceleration.y;}
-		//if (Mathf.Abs(y) >= borneY) {_y = (y-last_y)/10;last_y = y;}
 		if (Mathf.Abs(z) >= borneZ) {_z = Input.acceleration.z;}
 
 
@@ -91,7 +93,14 @@ public class Controller : MonoBehaviour {
 
 			//Fille
 			if (GameObject.Find("Main Camera").GetComponent<AfraidOfTheDark>().CanMove){
-			    Fille.transform.Translate (_x, 0, _y/30);
+				if (Mathf.Abs(_x) > 0 || Mathf.Abs(_y) > 0 ){
+					Fille.GetComponent<Animator>().SetBool("walking", true);
+					Fille.transform.Translate (_x, 0, _y/30);
+				}
+				else {Fille.GetComponent<Animator>().SetBool("walking", false);}
+			}
+			else{
+				Fille.GetComponent<Animator>().SetBool("walking", false);
 			}
 			/** Touches **/
 			if (Input.touchCount > 0) {
