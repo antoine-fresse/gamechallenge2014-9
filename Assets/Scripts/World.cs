@@ -22,6 +22,8 @@ public class World : MonoBehaviour {
 	public bool gagne = false;
 	public bool perdu = false;
 
+	private bool _timingOut = false;
+
 	private PhotonView _photonView;
 	// Use this for initialization
 	void Awake () {
@@ -56,6 +58,22 @@ public class World : MonoBehaviour {
 			papy = PhotonNetwork.Instantiate("Papy", StartPosition.position, Quaternion.identity, 0) as GameObject;
 			l = PhotonNetwork.Instantiate("Light", this.prefabLumiere.transform.position, this.prefabLumiere.transform.rotation, 0) as GameObject;
 		}
+
+
+		if (PhotonNetwork.inRoom) {
+			if (PhotonNetwork.room.playerCount < 2 && !_timingOut)
+				StartCoroutine(TimeOut());
+		}
+	}
+
+	IEnumerator TimeOut() {
+		_timingOut = true;
+		yield return new WaitForSeconds(3f);
+
+		if (PhotonNetwork.room.playerCount < 2) {
+			PhotonNetwork.Disconnect();
+		}
+		_timingOut = false;
 	}
 
 	void OnDisconnectedFromPhoton()
@@ -69,14 +87,7 @@ public class World : MonoBehaviour {
     }
 
 	void OnLeftRoom() {
-		_photonView.RPC("hasLeft", PhotonTargets.OthersBuffered, !gagne && !perdu);
-	}
-
-	[RPC]
-	private void hasLeft(bool b) {
-		if (b) {
-			PhotonNetwork.Disconnect();
-		}
+		
 	}
 
     public void declareDefeat()
