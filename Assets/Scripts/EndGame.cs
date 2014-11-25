@@ -12,6 +12,6 @@ public class EndGame : MonoBehaviour {
 		if (PhotonNetwork.inRoom)
 			PhotonNetwork.LeaveRoom();
 
-        Application.LoadLevel("Menu");
+        PhotonNetwork.LoadLevel("Menu");
     }
 }
