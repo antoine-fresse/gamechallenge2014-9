@@ -113,7 +113,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6118ed13aa7f42247b757bb486cf5f1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  refWorld: {fileID: 0}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -155,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dc982d11add1e64598fa46c8abb12df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smallFire: {fileID: 400000, guid: 739185d2f0c188e458230e94752837e4, type: 2}
+  SmallFire: {fileID: 400000, guid: 739185d2f0c188e458230e94752837e4, type: 2}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
