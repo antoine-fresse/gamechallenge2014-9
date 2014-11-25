@@ -62,17 +62,21 @@ public class World : MonoBehaviour {
 			papy = PhotonNetwork.Instantiate("Papy", StartPosition.position, Quaternion.identity, 0) as GameObject;
 			l = PhotonNetwork.Instantiate("Light", this.prefabLumiere.transform.position, this.prefabLumiere.transform.rotation, 0) as GameObject;
 		}
-
-
-		
 	}
 
+
+	void CleanUp() {
+		if (PhotonNetwork.isMasterClient) {
+			PhotonNetwork.DestroyAll();
+		}
+	}
 	IEnumerator TimeOut() {
 		_timingOut = true;
         Debug.Log("Timing out");
 		yield return new WaitForSeconds(3f);
 
 		if (PhotonNetwork.room.playerCount < 2) {
+			CleanUp();
 			PhotonNetwork.LeaveRoom();
 		}
 		_timingOut = false;
@@ -103,8 +107,10 @@ public class World : MonoBehaviour {
 	    perdu = true;
         OnDisconnectedFromPhoton();*/
 
-		if(PhotonNetwork.isMasterClient)
-			PhotonNetwork.LoadLevel("Defaite");
+	    if (PhotonNetwork.isMasterClient) {
+		    CleanUp();
+		    PhotonNetwork.LoadLevel("Defaite");
+	    }
     }
 
     public void declareVictory()
@@ -117,7 +123,9 @@ public class World : MonoBehaviour {
 	    /*gagne = true;
         OnDisconnectedFromPhoton();*/
 
-		if (PhotonNetwork.isMasterClient)
+	    if (PhotonNetwork.isMasterClient) {
+		    CleanUp();
 			PhotonNetwork.LoadLevel("Victoire");
+	    }
     }
 }
