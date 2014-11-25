@@ -72,14 +72,12 @@ public class Controller : MonoBehaviour {
 		if (!World.instance.Ready)
 			return;
 
-		
-
 		//récupération des données
 		x = (int)(Input.acceleration.x*100 - xInit);
 		y = (int)(Input.acceleration.y*100 - yInit);
 		z = (int)(Input.acceleration.z*100 - zInit); 
-		ix = Input.acceleration.x + Input.GetAxis("Horizontal");
-		iy = Input.acceleration.y + Input.GetAxis("Vertical");
+		ix = Input.acceleration.x + Input.GetAxis("Horizontal")*1.7f;
+		iy = Input.acceleration.y + Input.GetAxis("Vertical") * 1.7f;
 		iz = Input.acceleration.z;
 
 		_x = 0.0f;

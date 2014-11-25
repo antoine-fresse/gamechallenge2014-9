@@ -42,14 +42,14 @@ public class Papy : MonoBehaviour {
     [RPC]
     void Hide() {
         _animator.SetBool("hidden", true);
-        collider.enabled = false;
+		GetComponent<CapsuleCollider>().enabled = false;
         
     }
 
     [RPC]
     void Show(Vector3 t) {
         _animator.SetBool("hidden", false);
-        collider.enabled = true;
+        GetComponent<CapsuleCollider>().enabled = true;
         transform.position = t + new Vector3(-0.215f, 0f,0f);
     }
 

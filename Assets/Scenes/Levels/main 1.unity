@@ -1837,11 +1837,11 @@ Prefab:
       objectReference: {fileID: 563063846}
     - target: {fileID: 22400002, guid: 4ddc187698d40254c9193faf3008446a, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 527
+      value: 524
       objectReference: {fileID: 0}
     - target: {fileID: 22400002, guid: 4ddc187698d40254c9193faf3008446a, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 494
+      value: 491
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4ddc187698d40254c9193faf3008446a, type: 2}
@@ -12027,7 +12027,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 527, y: 494}
+  m_SizeDelta: {x: 524, y: 491}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1253967275
 MonoBehaviour:

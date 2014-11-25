@@ -10,7 +10,7 @@ public class PhotonNetworkMenu : MonoBehaviour {
 	public GameObject EcranJoin;
 
 	public Text roomNameText;
-	private string _roomName = "Theroom";
+	private string _roomName = "room name";
 
 	private TouchScreenKeyboard _keyboard;
 
@@ -20,12 +20,16 @@ public class PhotonNetworkMenu : MonoBehaviour {
 	void Start () {
 		StartCoroutine(Menus());
 		PhotonNetwork.logLevel = PhotonLogLevel.ErrorsOnly;
+		PhotonNetwork.Disconnect();
 		PhotonNetwork.ConnectUsingSettings("v1.0");
 		PhotonNetwork.automaticallySyncScene = true;
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+
 		if (_keyboard != null)
 			if(_keyboard.active)
 				_roomName = _keyboard.text;

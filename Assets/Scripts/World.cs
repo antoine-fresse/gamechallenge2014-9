@@ -31,9 +31,12 @@ public class World : MonoBehaviour {
 		_photonView = GetComponent<PhotonView>();
 		PhotonNetwork.automaticallySyncScene = true;
 		PhotonNetwork.offlineMode = testLocal;
+		Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Eau"), LayerMask.NameToLayer("Chars"));
 	}
 
 	void Update() {
+
+		
 		if (!l)
 			l = GameObject.Find("Light(Clone)");
 		if (!fille)

@@ -15,7 +15,7 @@ GameObject:
   - 54: {fileID: 5400000}
   - 95: {fileID: 9500000}
   - 82: {fileID: 8200000}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Eau
   m_TagString: Eau
   m_Icon: {fileID: 0}
