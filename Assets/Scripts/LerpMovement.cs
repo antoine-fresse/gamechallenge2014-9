@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class LightMovement : MonoBehaviour {
+public class LerpMovement : MonoBehaviour {
 
 	private Vector3 _latestCorrectPos;
 	private Vector3 _onUpdatePos;

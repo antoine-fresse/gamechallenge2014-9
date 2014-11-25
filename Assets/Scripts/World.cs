@@ -39,6 +39,11 @@ public class World : MonoBehaviour {
 			extincteur = GameObject.Find("Extincteur(Clone)");
 
 		Ready = fille && l && extincteur && papy;
+
+		if (PhotonNetwork.room.playerCount < 2) {
+			PhotonNetwork.Disconnect();
+			Application.LoadLevel("Menu");
+		}
 	}
 
 	void Start() {
@@ -56,11 +61,11 @@ public class World : MonoBehaviour {
 
 	void OnDisconnectedFromPhoton()
     {
-		PhotonNetwork.LoadLevel("Menu");
+		//PhotonNetwork.LoadLevel("Menu");
     }
 
 	void OnLeftRoom() {
-		PhotonNetwork.LoadLevel("Menu");
+		//PhotonNetwork.LoadLevel("Menu");
 	}
 
     public void declareDefeat()
@@ -71,7 +76,8 @@ public class World : MonoBehaviour {
     [RPC]
     private void defeat()
     {
-		PhotonNetwork.LoadLevel("Defaite");
+		PhotonNetwork.Disconnect();
+		Application.LoadLevel("Defaite");
     }
 
     public void declareVictory()
@@ -82,6 +88,7 @@ public class World : MonoBehaviour {
     [RPC]
     private void victory()
     {
-        PhotonNetwork.LoadLevel("Victoire");
+		PhotonNetwork.Disconnect();
+		Application.LoadLevel("Victoire");
     }
 }
