@@ -19,6 +19,9 @@ public class World : MonoBehaviour {
 
 	public bool Ready;
 
+	public bool gagne = false;
+	public bool perdu = false;
+
 	private PhotonView _photonView;
 	// Use this for initialization
 	void Awake () {
@@ -40,10 +43,6 @@ public class World : MonoBehaviour {
 
 		Ready = fille && l && extincteur && papy;
 
-		if (PhotonNetwork.room.playerCount < 2) {
-			PhotonNetwork.Disconnect();
-			Application.LoadLevel("Menu");
-		}
 	}
 
 	void Start() {
@@ -61,11 +60,23 @@ public class World : MonoBehaviour {
 
 	void OnDisconnectedFromPhoton()
     {
-		//PhotonNetwork.LoadLevel("Menu");
+		if(gagne)
+			Application.LoadLevel("Victoire");
+		else if (perdu)
+			Application.LoadLevel("Defaite");
+		else 
+			Application.LoadLevel("Menu");
     }
 
 	void OnLeftRoom() {
-		//PhotonNetwork.LoadLevel("Menu");
+		_photonView.RPC("hasLeft", PhotonTargets.OthersBuffered, !gagne && !perdu);
+	}
+
+	[RPC]
+	private void hasLeft(bool b) {
+		if (b) {
+			PhotonNetwork.Disconnect();
+		}
 	}
 
     public void declareDefeat()
@@ -74,10 +85,9 @@ public class World : MonoBehaviour {
     }
 
     [RPC]
-    private void defeat()
-    {
+    private void defeat() {
+	    perdu = true;
 		PhotonNetwork.Disconnect();
-		Application.LoadLevel("Defaite");
     }
 
     public void declareVictory()
@@ -86,9 +96,8 @@ public class World : MonoBehaviour {
     }
 
     [RPC]
-    private void victory()
-    {
+    private void victory() {
+	    gagne = true;
 		PhotonNetwork.Disconnect();
-		Application.LoadLevel("Victoire");
     }
 }

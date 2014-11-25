@@ -29,4 +29,5 @@ MonoBehaviour:
   - shootRPC
   - Show
   - victory
+  - hasLeft
   DisableAutoOpenWizard: 0
