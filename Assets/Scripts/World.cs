@@ -29,7 +29,7 @@ public class World : MonoBehaviour {
 	void Awake () {
 		instance = this;
 		_photonView = GetComponent<PhotonView>();
-
+		PhotonNetwork.automaticallySyncScene = true;
 		PhotonNetwork.offlineMode = testLocal;
 	}
 
@@ -73,19 +73,19 @@ public class World : MonoBehaviour {
 		yield return new WaitForSeconds(3f);
 
 		if (PhotonNetwork.room.playerCount < 2) {
-			PhotonNetwork.Disconnect();
+			PhotonNetwork.LeaveRoom();
 		}
 		_timingOut = false;
 	}
 
 	void OnDisconnectedFromPhoton()
     {
-		if(gagne)
+		/*if(gagne)
 			PhotonNetwork.LoadLevel("Victoire");
 		else if (perdu)
 			PhotonNetwork.LoadLevel("Defaite");
 		else
-			PhotonNetwork.LoadLevel("Menu");
+			PhotonNetwork.LoadLevel("Menu");*/
     }
 
 	void OnLeftRoom() {
@@ -99,9 +99,12 @@ public class World : MonoBehaviour {
 
     [RPC]
     void defeat() {
-        Debug.Log("Recu defaite");
+        /*Debug.Log("Recu defaite");
 	    perdu = true;
-        OnDisconnectedFromPhoton();
+        OnDisconnectedFromPhoton();*/
+
+		if(PhotonNetwork.isMasterClient)
+			PhotonNetwork.LoadLevel("Defaite");
     }
 
     public void declareVictory()
@@ -111,7 +114,10 @@ public class World : MonoBehaviour {
 
     [RPC]
     void victory() {
-	    gagne = true;
-        OnDisconnectedFromPhoton();
+	    /*gagne = true;
+        OnDisconnectedFromPhoton();*/
+
+		if (PhotonNetwork.isMasterClient)
+			PhotonNetwork.LoadLevel("Victoire");
     }
 }
