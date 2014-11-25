@@ -15,7 +15,7 @@ public class FireColumn : MonoBehaviour {
 			transform.Translate(new Vector3(Speed*Time.deltaTime/128f,0f,0f));
 	}
 
-    void OnTriggerEnter(Collider other) {
+	void OnTriggerStay(Collider other) {
         if (other.tag == "Player" || other.tag == "Papy")
         {
             World.instance.declareDefeat();
