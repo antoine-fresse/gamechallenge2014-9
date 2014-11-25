@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class EndGame : MonoBehaviour {
@@ -8,7 +8,7 @@ public class EndGame : MonoBehaviour {
     }
 	public IEnumerator goBackToMainMenu() {
 	    yield return new WaitForSeconds(Duration);
-        Network.Disconnect();
-        Application.LoadLevel("Menu");
+        PhotonNetwork.Disconnect();
+        //Application.LoadLevel("Menu");
     }
 }

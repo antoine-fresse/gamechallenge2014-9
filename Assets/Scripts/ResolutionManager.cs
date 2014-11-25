@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
+[ExecuteInEditMode]
 public class ResolutionManager : MonoBehaviour {
 
     public Canvas canvas;
@@ -10,7 +11,8 @@ public class ResolutionManager : MonoBehaviour {
         //Screen.SetResolution(256,240,false);
     }
 	// Update is called once per frame
-	void FixedUpdate () {
+	
+	void Update () {
         var size = canvas.pixelRect;
 
         var rect = GetComponent<RectTransform>();

@@ -1,7 +1,16 @@
 fileFormatVersion: 2
 guid: 06cc0b7040d6f7f4caac0953ef3f51fa
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: title
+    21300002: title
+    21300004: join
+    21300006: htp
+    21300008: credits
+    21300010: quit
+    21300012: menu_6
+    21300014: menu_1
+    21300016: black
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -27,11 +36,11 @@ TextureImporter:
     filterMode: 0
     aniso: 16
     mipBias: -1
-    wrapMode: -1
+    wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -42,6 +51,76 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: title
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 182
+        width: 79
+        height: 58
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: menu_1
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 140
+        width: 79
+        height: 34
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: join
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 106
+        width: 79
+        height: 34
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: htp
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 75
+        width: 128
+        height: 34
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: credits
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 43
+        width: 86
+        height: 34
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: quit
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 10
+        width: 51
+        height: 34
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: black
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 159
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

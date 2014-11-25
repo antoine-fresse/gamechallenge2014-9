@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -14,7 +14,7 @@ public class Credits : MonoBehaviour {
     IEnumerator CreditRoll() {
         int x = 0;
         while (true) {
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(3f);
             im.sprite = A[x%A.Length];
             x++;
         }

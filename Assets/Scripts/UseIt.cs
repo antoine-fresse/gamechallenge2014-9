@@ -1,11 +1,16 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class UseIt : MonoBehaviour {
 	public GameObject water;
 	public float fireRate;
 	private float nextFire;
+	private PhotonView _photonView ;
 
+
+	void Awake() {
+		_photonView = GetComponent<PhotonView>();
+	}
     void Update() {
         if (Input.GetKeyUp(KeyCode.Space))
             shoot();
@@ -13,8 +18,7 @@ public class UseIt : MonoBehaviour {
 
 
     public void shoot() {
-        networkView.RPC("shootRPC", RPCMode.All);
-		//shootRPC();
+		_photonView.RPC("shootRPC", PhotonTargets.AllBuffered);
     }
 	// Update is called once per frame
 	[RPC]

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Papy : MonoBehaviour {
@@ -7,8 +7,8 @@ public class Papy : MonoBehaviour {
     public bool holdHand {
         get { return _holdHand; }
         set {
-            if(value != _holdHand && networkView.isMine)
-                networkView.RPC("HasChanged", RPCMode.OthersBuffered, value);
+			if (value != _holdHand && _photonView.isMine)
+				_photonView.RPC("HasChanged", PhotonTargets.OthersBuffered, value);
             _holdHand = value;
         }
     }
@@ -16,22 +16,22 @@ public class Papy : MonoBehaviour {
     public bool filleTouche; // On est collé la la fille;
 
     private Animator _animator;
+	private PhotonView _photonView;
 	// Use this for initialization
 	void Start () {
         _holdHand = false;
 		filleTouche = false;
 	    _animator = GetComponent<Animator>();
+		_photonView = GetComponent<PhotonView>();
 	}
 
     public void callHide() {
-        networkView.RPC("Hide", RPCMode.OthersBuffered);
-        Hide();
+		_photonView.RPC("Hide", PhotonTargets.AllBuffered);
     }
 
     public void callShow(Transform t)
     {
-        networkView.RPC("Show", RPCMode.OthersBuffered, t.position);
-        Show(t.position);
+		_photonView.RPC("Show", PhotonTargets.AllBuffered, t.position);
     }
 
     [RPC]

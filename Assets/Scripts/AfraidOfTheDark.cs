@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class AfraidOfTheDark : MonoBehaviour {
@@ -20,15 +20,12 @@ public class AfraidOfTheDark : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update() {
-	    if (!Fille || !LightRail) {
-	        Fille = GameObject.Find("Fille(Clone)");
-	        LightRail = GameObject.Find("Light(Clone)");
-	    }
-	    if (!Fille || !LightRail) return;
 
-        
-	    var screenPositionLenka = GameCamera.WorldToScreenPoint(Fille.transform.position + new Vector3(0f,0.33f,0f));
-	    var screenPositionLight = GameCamera.WorldToScreenPoint(LightRail.transform.position);
+		if (!World.instance.Ready)
+			return;
+
+		var screenPositionLenka = GameCamera.WorldToScreenPoint(World.instance.fille.transform.position + new Vector3(0f, 0.33f, 0f));
+		var screenPositionLight = GameCamera.WorldToScreenPoint(World.instance.l.transform.position);
 
         var p1 = new Vector2(screenPositionLenka.x, screenPositionLenka.y);
         var p2 = new Vector2(screenPositionLight.x, screenPositionLight.y);
@@ -39,11 +36,13 @@ public class AfraidOfTheDark : MonoBehaviour {
 
         
 
-	    CanMove = ang < 25f;
+	    CanMove = ang < 30f;
 
-        
+		World.instance.fille.GetComponent<FilleAnimation>().SetAfraid(!CanMove);
 
-	    /*
+
+
+		/*
 	    if (screenPosition.x > 256f || screenPosition.x < 0f || screenPosition.y < 0f || screenPosition.y > 240f) {
 	        CanMove = false;
 	        return;

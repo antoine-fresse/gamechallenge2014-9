@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[ExecuteInEditMode]
+
 [AddComponentMenu("Image Effects/Color Adjustments/Grayscale")]
 public class GrayscaleEffect : ImageEffectBase {
 	public Texture  textureRamp;
@@ -8,7 +8,8 @@ public class GrayscaleEffect : ImageEffectBase {
 
 	// Called by camera to apply image effect
 	void OnRenderImage (RenderTexture source, RenderTexture destination) {
-		if (Network.peerType == NetworkPeerType.Client) {
+		
+		if (true) {
 			material.SetTexture ("_RampTex", textureRamp);
 			material.SetFloat ("_RampOffset", rampOffset);
 			Graphics.Blit (source, destination, material);

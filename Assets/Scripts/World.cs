@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
-public class World : MonoBehaviour
-{
+public class World : MonoBehaviour {
+
+	public static World instance;
     public GameObject prefabPapy;
     public GameObject prefabFille;
 	public GameObject prefabLumiere;
@@ -15,65 +16,72 @@ public class World : MonoBehaviour
 	public GameObject extincteur;
 
     public Transform StartPosition;
+
+	public bool Ready;
+
+	private PhotonView _photonView;
 	// Use this for initialization
-	void Awake ()
-    {
-        // Papy : Serveur
-        // Lenka : Client
-        if (testLocal)
-        {
-            papy = Instantiate(this.prefabPapy, StartPosition.position, Quaternion.identity) as GameObject;
-            fille = Instantiate(this.prefabFille, StartPosition.position + new Vector3(0.25f,0f,0f), Quaternion.identity) as GameObject;
-            l = Instantiate(this.prefabLumiere, this.prefabLumiere.transform.position, this.prefabLumiere.transform.rotation) as GameObject;
-			extincteur = Instantiate(this.prefabExtincteur, this.prefabExtincteur.transform.position, this.prefabExtincteur.transform.rotation)as GameObject;
-        }
-        else
-        {
-            if (Network.peerType == NetworkPeerType.Server)
-            {
-                this.isPapy = false;
-                fille = Network.Instantiate(this.prefabFille, StartPosition.position + new Vector3(0.25f, 0f, 0f), Quaternion.identity, 0) as GameObject;
-                var extPos = new Vector3(StartPosition.position.x, StartPosition.position.y, -0.75f);
-                extincteur = Network.Instantiate(this.prefabExtincteur, extPos, Quaternion.identity, 0) as GameObject;
-			}
-            else
-            {
-                this.isPapy = true;
-                papy = Network.Instantiate(this.prefabPapy, StartPosition.position, Quaternion.identity, 0) as GameObject;
-                l = Network.Instantiate(this.prefabLumiere, this.prefabLumiere.transform.position, this.prefabLumiere.transform.rotation, 0) as GameObject;
-			}
-        }
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
+	void Awake () {
+		instance = this;
+		_photonView = GetComponent<PhotonView>();
+
+		PhotonNetwork.offlineMode = testLocal;
 	}
 
-    void OnDisconnectedFromServer(NetworkDisconnection info)
+	void Update() {
+		if (!l)
+			l = GameObject.Find("Light(Clone)");
+		if (!fille)
+			fille = GameObject.Find("Fille(Clone)");
+		if (!papy)
+			papy = GameObject.Find("Papy(Clone)");
+		if (!extincteur)
+			extincteur = GameObject.Find("Extincteur(Clone)");
+
+		Ready = fille && l && extincteur && papy;
+	}
+
+	void Start() {
+		if (PhotonNetwork.isMasterClient) {
+			this.isPapy = false;
+			fille = PhotonNetwork.Instantiate("Fille", StartPosition.position + new Vector3(0.25f, 0f, 0f), Quaternion.identity,0) as GameObject;
+			var extPos = new Vector3(StartPosition.position.x, StartPosition.position.y, -0.75f);
+			extincteur = PhotonNetwork.Instantiate("Extincteur", extPos, Quaternion.identity, 0) as GameObject;
+		} else {
+			this.isPapy = true;
+			papy = PhotonNetwork.Instantiate("Papy", StartPosition.position, Quaternion.identity, 0) as GameObject;
+			l = PhotonNetwork.Instantiate("Light", this.prefabLumiere.transform.position, this.prefabLumiere.transform.rotation, 0) as GameObject;
+		}
+	}
+
+	void OnDisconnectedFromPhoton()
     {
-        Application.LoadLevel("Menu");
+		PhotonNetwork.LoadLevel("Menu");
     }
+
+	void OnLeftRoom() {
+		PhotonNetwork.LoadLevel("Menu");
+	}
 
     public void declareDefeat()
     {
-        networkView.RPC("defeat", RPCMode.AllBuffered);
+		_photonView.RPC("defeat", PhotonTargets.AllBuffered);
     }
 
     [RPC]
     private void defeat()
     {
-        Application.LoadLevel("Defaite");
+		PhotonNetwork.LoadLevel("Defaite");
     }
 
     public void declareVictory()
     {
-        networkView.RPC("victory", RPCMode.AllBuffered);
+		_photonView.RPC("victory", PhotonTargets.AllBuffered);
     }
 
     [RPC]
     private void victory()
     {
-        Application.LoadLevel("Victoire");
+        PhotonNetwork.LoadLevel("Victoire");
     }
 }
