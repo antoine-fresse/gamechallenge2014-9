@@ -147,7 +147,7 @@ public class Controller : MonoBehaviour {
 			if (Input.touchCount > 0) {
 				for (int i = 0; i < Input.touchCount; i++) {
 					if (Droite.Contains(Input.GetTouch(i).position)) {
-						Papy.GetComponent<Papy>().holdHand = true;
+						Papy.GetComponent<Papy>().holdHand = AfraidOfTheDark.instance.CanMove;
 					}
 					else {
 						Papy.GetComponent<Papy>().holdHand = false;
@@ -158,7 +158,7 @@ public class Controller : MonoBehaviour {
 				}
 			}
 			else {
-				Papy.GetComponent<Papy>().holdHand = Input.GetButton("Fire1");
+				Papy.GetComponent<Papy>().holdHand = Input.GetButton("Fire1") && AfraidOfTheDark.instance.CanMove;
 			}
 
 			}
