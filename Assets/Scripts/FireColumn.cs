@@ -1,26 +1,24 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class FireColumn : MonoBehaviour {
 
     public float Speed;
-    public World refWorld;
+	private PhotonView _photonView;
 
-	// Use this for initialization
-	void Start () {
-	
+	void Start() {
+		_photonView = GetComponent<PhotonView>();
 	}
-	
 	// Update is called once per frame
 	void FixedUpdate () {
-	    transform.Translate(new Vector3(Speed*Time.deltaTime/128f,0f,0f));
+		if(PhotonNetwork.isMasterClient)
+			transform.Translate(new Vector3(Speed*Time.deltaTime/128f,0f,0f));
 	}
 
     void OnTriggerEnter(Collider other) {
         if (other.tag == "Player" || other.tag == "Papy")
         {
-            // Il faut déclarer défaite
-            this.refWorld.declareDefeat();
+            World.instance.declareDefeat();
         }
     }
 }

@@ -11,22 +11,17 @@ public class UseIt : MonoBehaviour {
 	void Awake() {
 		_photonView = GetComponent<PhotonView>();
 	}
-    void Update() {
-        if (Input.GetKeyUp(KeyCode.Space))
-            shoot();
-    }
-
 
     public void shoot() {
-		_photonView.RPC("shootRPC", PhotonTargets.AllBuffered);
+		_photonView.RPC("shootRPC", PhotonTargets.AllBuffered, transform.position);
     }
 	// Update is called once per frame
 	[RPC]
-    void shootRPC () {
+    void shootRPC (Vector3 pos) {
 		if (Time.time > nextFire)
 		{
 				nextFire = Time.time + fireRate;
-				Instantiate(water, this.transform.position, water.transform.rotation);
+				Instantiate(water, pos + new Vector3(0, 0.2f, 0), water.transform.rotation);
 		}
 	}
 }
