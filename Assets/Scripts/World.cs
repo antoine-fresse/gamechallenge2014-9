@@ -81,11 +81,11 @@ public class World : MonoBehaviour {
 	void OnDisconnectedFromPhoton()
     {
 		if(gagne)
-			Application.LoadLevel("Victoire");
+			PhotonNetwork.LoadLevel("Victoire");
 		else if (perdu)
-			Application.LoadLevel("Defaite");
-		else 
-			Application.LoadLevel("Menu");
+			PhotonNetwork.LoadLevel("Defaite");
+		else
+			PhotonNetwork.LoadLevel("Menu");
     }
 
 	void OnLeftRoom() {
