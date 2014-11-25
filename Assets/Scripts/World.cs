@@ -44,7 +44,11 @@ public class World : MonoBehaviour {
 			extincteur = GameObject.Find("Extincteur(Clone)");
 
 		Ready = fille && l && extincteur && papy;
-
+        if (PhotonNetwork.inRoom)
+        {
+            if (PhotonNetwork.room.playerCount < 2 && !_timingOut)
+                StartCoroutine(TimeOut());
+        }
 	}
 
 	void Start() {
@@ -60,14 +64,12 @@ public class World : MonoBehaviour {
 		}
 
 
-		if (PhotonNetwork.inRoom) {
-			if (PhotonNetwork.room.playerCount < 2 && !_timingOut)
-				StartCoroutine(TimeOut());
-		}
+		
 	}
 
 	IEnumerator TimeOut() {
 		_timingOut = true;
+        Debug.Log("Timing out");
 		yield return new WaitForSeconds(3f);
 
 		if (PhotonNetwork.room.playerCount < 2) {
@@ -96,9 +98,10 @@ public class World : MonoBehaviour {
     }
 
     [RPC]
-    private void defeat() {
+    void defeat() {
+        Debug.Log("Recu defaite");
 	    perdu = true;
-		PhotonNetwork.Disconnect();
+        OnDisconnectedFromPhoton();
     }
 
     public void declareVictory()
@@ -107,8 +110,8 @@ public class World : MonoBehaviour {
     }
 
     [RPC]
-    private void victory() {
+    void victory() {
 	    gagne = true;
-		PhotonNetwork.Disconnect();
+        OnDisconnectedFromPhoton();
     }
 }

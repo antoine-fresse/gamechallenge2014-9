@@ -8,6 +8,9 @@ public class EndGame : MonoBehaviour {
     }
 	public IEnumerator goBackToMainMenu() {
 	    yield return new WaitForSeconds(Duration);
+        
+        PhotonNetwork.Disconnect();
+
         Application.LoadLevel("Menu");
     }
 }
