@@ -25,6 +25,7 @@ public class PhotonNetworkMenu : MonoBehaviour {
 		PhotonNetwork.automaticallySyncScene = true;
 
 	}
+
 	
 	// Update is called once per frame
 	void Update () {
@@ -34,7 +35,12 @@ public class PhotonNetworkMenu : MonoBehaviour {
 			if(_keyboard.active)
 				_roomName = _keyboard.text;
 
-		roomNameText.text = _roomName;
+	    if (PhotonNetwork.connecting)
+	        roomNameText.text = "Connecting...";
+        else if(!PhotonNetwork.connected)
+            PhotonNetwork.ConnectUsingSettings("v1.0");
+        else
+            roomNameText.text = _roomName;
 
 		if (!_ready)
 			return;
